@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ChordDatabase.txt</file>
+        <file>InstrumentDatabase.txt</file>
+    </qresource>
+</RCC>
