@@ -26,9 +26,10 @@ std::string tolower(std::string str)
     return result;
 }
 
-void readPreferences()
+void startup()
 {
     QDir dir(QDir::homePath());
+    dir.cd("Library");
     if (!dir.cd("SmartGuitarChords"))
     {
         dir.mkdir("SmartGuitarChords");

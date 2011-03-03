@@ -10,6 +10,6 @@ std::string trim(std::string str);
 
 std::string tolower(std::string str);
 
-void readPreferences();
+void startup();
 
 #endif // FUNCTIONS_H

@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Smart Guitar Chords</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -54,11 +54,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>InstrumentTree</zorder>
-   <zorder>ChordTree</zorder>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>InstrumentTree</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
