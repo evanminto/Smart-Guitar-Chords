@@ -1,0 +1,12 @@
+***************************************
+*       Custom Guitar Chords          *
+*         (tentative name)            *
+***************************************
+
+Designed by Evan Minto, as a part of the Rensselaer Center for Open-Source Software at Rensselaer Polytechnic Institute.
+
+To compile and run Custom Guitar Chords, the project should be opened in Nokia's Qt Creator program, and built from there.
+
+When you open this test version of the program, you will only be able to read text files from the CustomGuitarChords library, which requires the upcoming write function to be completed before there can actually be readable files in there.
+
+Currently, the program is only designed for Mac OS X, though small changes in how it deals with library files should make for a quick switch to other platforms in the future.

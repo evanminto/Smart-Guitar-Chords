@@ -29,8 +29,11 @@ private:
     void regenerateNotes();
     void calculateInfo();
 
+    bool valid;
+
 public:
     Chord();
+    Chord(Chord const &c);
     Chord(Instrument *i, std::string s, std::vector <std::string> t);
     Chord(Instrument *i, std::string s, std::vector <std::string> t, int c);
     Chord(Instrument *i, std::string s, std::vector <std::string> t, int c, bool rel);
@@ -50,10 +53,15 @@ public:
 
     int getID() const { return id; }
 
+    int isValid() const { return valid; }
+
     void setID(int i) { id = i; }
     void putName(std::string s) { name = s; };
     void putInstrument(Instrument *i) { inst = i; };
+    void invalidate() { valid = false; }
     void updateTab(std::vector <std::string> t);
+
+    Chord& operator=(Chord const &c);
 };
 
 #endif // CHORD_H

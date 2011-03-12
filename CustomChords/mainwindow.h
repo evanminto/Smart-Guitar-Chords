@@ -1,8 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include "CustomGuitarChords.h"
 #include <string>
+#include <QMainWindow>
+#include <QFileSystemModel>
+#include <QModelIndex>
 
 using namespace std;
 
@@ -17,11 +20,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void loadInstruments(string const &file, Instrument &in);
+    void loadChords(string const &file, Chord &ch);
 
 private:
     Ui::MainWindow *ui;
+    Instrument current_inst;
+    Chord current_chord;
+    void printInstInfo();
+    void printChordInfo();
 
 private slots:
+
+private slots:
+    void on_ChordTree_clicked(QModelIndex index);
+    void on_InstrumentTree_clicked(QModelIndex index);
 };
 
 #endif // MAINWINDOW_H

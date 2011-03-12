@@ -61,6 +61,25 @@ Chord::Chord()
     capo = 0;
 }
 
+Chord::Chord(Chord const &c)
+{
+    name = c.getName();
+    inst = &c.getInstrument();
+    capo = c.getCapo();
+    tab = c.getTab();
+    notes = c.getNotes();
+    relative = c.isRelativeCapo();
+
+    bassNote = c.getBassNote();
+    namedNote = c.getNamedNote();
+    pattern = c.getPattern();
+    modifier = c.getModifier();
+
+    id = c.getID();
+
+    valid = true;
+}
+
 Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t)
 {
     inst = i;
@@ -71,6 +90,8 @@ Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t)
 
     regenerateNotes();
     calculateInfo();
+
+    valid = true;
 }
 
 Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t, int c)
@@ -83,6 +104,8 @@ Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t, int c)
 
     regenerateNotes();
     calculateInfo();
+
+    valid = true;
 }
 
 Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t, int c, bool rel)
@@ -95,6 +118,8 @@ Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t, int c, b
 
     regenerateNotes();
     calculateInfo();
+
+    valid = true;
 }
 
 
@@ -172,4 +197,25 @@ std::ostream& operator<<(std::ostream& output, const Chord& c)
 
          return output;
          */
+}
+
+Chord& Chord::operator=(Chord const &c)
+{
+    name = c.getName();
+    inst = &c.getInstrument();
+    capo = c.getCapo();
+    tab = c.getTab();
+    notes = c.getNotes();
+    relative = c.isRelativeCapo();
+
+    bassNote = c.getBassNote();
+    namedNote = c.getNamedNote();
+    pattern = c.getPattern();
+    modifier = c.getModifier();
+
+    id = c.getID();
+
+    valid = true;
+
+    return *this;
 }

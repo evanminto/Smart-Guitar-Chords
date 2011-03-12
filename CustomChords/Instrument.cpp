@@ -6,6 +6,15 @@ Instrument::Instrument()
     numStrings = 0;
 }
 
+Instrument::Instrument(Instrument const &i)
+{
+    name = i.getName();
+    numStrings = i.getNumStrings();
+    tuning = i.getTuning();
+
+    id = i.getID();
+}
+
 Instrument::Instrument(std::string s, int n, std::vector <int> t)
 {
     name = s;
@@ -132,4 +141,15 @@ std::string tuningIntToStr(int t, char sharp_flat)
     }
 
     return "";
+}
+
+Instrument& Instrument::operator=(Instrument const &i)
+{
+    name = i.getName();
+    numStrings = i.getNumStrings();
+    tuning = i.getTuning();
+
+    id = i.getID();
+
+    return *this;
 }

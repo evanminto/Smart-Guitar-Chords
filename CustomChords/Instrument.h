@@ -18,6 +18,7 @@ private:
 
 public:
     Instrument();
+    Instrument(Instrument const &i);
     Instrument(std::string s, int n, std::vector <int> t);
 
     std::string getName() const { return name; }
@@ -27,6 +28,7 @@ public:
 
     void setID(int i) { id = i; }
 
+    Instrument& operator=(Instrument const &i);
 };
 
 int tuningStrToInt(std::string t);

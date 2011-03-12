@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>796</width>
-    <height>473</height>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>30</y>
+      <y>60</y>
       <width>731</width>
-      <height>391</height>
+      <height>361</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -34,7 +34,17 @@
         </widget>
        </item>
        <item>
-        <widget class="QTreeView" name="InstrumentTree"/>
+        <widget class="QTreeView" name="InstrumentTree">
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>150</number>
+         </attribute>
+         <attribute name="headerStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+        </widget>
        </item>
       </layout>
      </item>
@@ -48,11 +58,54 @@
         </widget>
        </item>
        <item>
-        <widget class="QTreeView" name="ChordTree"/>
+        <widget class="QTreeView" name="ChordTree">
+         <attribute name="headerDefaultSectionSize">
+          <number>150</number>
+         </attribute>
+        </widget>
        </item>
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="filepath">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>451</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="filepath2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>30</y>
+      <width>451</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="statusbar">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>430</y>
+      <width>731</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
