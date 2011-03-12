@@ -3,6 +3,8 @@
 
 #include "CustomGuitarChords.h"
 #include <string>
+#include <vector>
+#include <cstdlib>
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QModelIndex>
@@ -27,12 +29,15 @@ private:
     Ui::MainWindow *ui;
     Instrument current_inst;
     Chord current_chord;
+    QDir inst_dir;
+    QDir chord_dir;
     void printInstInfo();
     void printChordInfo();
 
 private slots:
 
 private slots:
+    //void on_inst_folder_button_clicked();
     void on_ChordTree_clicked(QModelIndex index);
     void on_InstrumentTree_clicked(QModelIndex index);
 };

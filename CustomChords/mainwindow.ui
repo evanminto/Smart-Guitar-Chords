@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>796</width>
-    <height>536</height>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>130</y>
       <width>731</width>
       <height>361</height>
      </rect>
@@ -36,7 +36,7 @@
        <item>
         <widget class="QTreeView" name="InstrumentTree">
          <attribute name="headerVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="headerDefaultSectionSize">
           <number>150</number>
@@ -73,7 +73,7 @@
      <rect>
       <x>40</x>
       <y>0</y>
-      <width>451</width>
+      <width>721</width>
       <height>16</height>
      </rect>
     </property>
@@ -85,8 +85,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
-      <width>451</width>
+      <y>26</y>
+      <width>721</width>
       <height>16</height>
      </rect>
     </property>
@@ -105,6 +105,52 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="chord_folder_button">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>90</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create Folder</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="inst_folder_button">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>90</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create Folder</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inst_folder_name">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="chord_folder_name">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>90</y>
+      <width>161</width>
+      <height>22</height>
+     </rect>
     </property>
    </widget>
   </widget>

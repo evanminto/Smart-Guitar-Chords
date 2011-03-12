@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E23C7E6B2DA71E5ACA9686 /* qrc_resource.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 29948BD57108802D93A2DD03 /* qrc_resource.cpp */; settings = {ATTRIBUTES = (); }; };
+		06323BB5D9C28411BA6122AD /* functions.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 59BEAED489DBE3270520B5EF /* functions.cpp */; settings = {ATTRIBUTES = (); }; };
+		069D05B0128AE5DC7EE31738 /* QtCore.framework in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 7BC2E65A5E699A5E5D834CA2 /* QtCore.framework */; };
+		2078B091132B042200B48F04 /* CustomChords.app in Project Copy */ = {isa = PBXBuildFile; fileRef = 2078B08E132B042200B48F04 /* CustomChords.app */; };
+		225218CF5222249E27A57DF4 /* Chord.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = A7901B8CA97F36E322E0D793 /* Chord.cpp */; settings = {ATTRIBUTES = (); }; };
+		26C2BED6C570C95F5243C556 /* moc_mainwindow.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
+		2B093CA6F071B023A473CED0 /* main.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 118FCBAABA162BA17933C789 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
+		381E527741739AE09CB39E31 /* Instrument.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 002913C61B8614F8F5DE4E95 /* Instrument.cpp */; settings = {ATTRIBUTES = (); }; };
+		462C0F34BBEF2375A9469BB5 /* mainwindow.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
+		501667F26B3C1FF6767A7C12 /* QtGui.framework in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 9B36DA7E32F0304E780E7972 /* QtGui.framework */; };
+		6FFAA7D9485D67F5AD838ADF /* InstrumentDatabase.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 2C11F482EDB667750EA92151 /* InstrumentDatabase.cpp */; settings = {ATTRIBUTES = (); }; };
+		AFE6A7ED8305A32C95EADD16 /* ChordDatabase.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 81576A62DA4B440CFB5ECF07 /* ChordDatabase.cpp */; settings = {ATTRIBUTES = (); }; };
+		B41A09D795749A35C46746A8 /* Note.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 573790C416B569EF0F2401F5 /* Note.cpp */; settings = {ATTRIBUTES = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F6069D5A5DA8AA28EDB8B3C6 /* Project Copy */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
+			dstSubfolderSpec = 0;
+			files = (
+				2078B091132B042200B48F04 /* CustomChords.app in Project Copy */,
+			);
+			name = "Project Copy";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		002913C61B8614F8F5DE4E95 /* Instrument.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Instrument.cpp; sourceTree = "<group>"; };
+		0497F4AEE2EDD2F4380CDFFD /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		118FCBAABA162BA17933C789 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2078B08E132B042200B48F04 /* CustomChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		29948BD57108802D93A2DD03 /* qrc_resource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qrc_resource.cpp; sourceTree = "<group>"; };
+		2C11F482EDB667750EA92151 /* InstrumentDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InstrumentDatabase.cpp; sourceTree = "<group>"; };
+		3109D2A9322E64919D7F69A9 /* InstrumentDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstrumentDatabase.h; sourceTree = "<group>"; };
+		336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_mainwindow.cpp; sourceTree = "<group>"; };
+		34460E105D18DEAC1FF7EFCE /* Chord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chord.h; sourceTree = "<group>"; };
+		358CA00F6C996836E4634E42 /* CustomChords.pro */ = {isa = PBXFileReference; lastKnownFileType = text; path = CustomChords.pro; sourceTree = "<group>"; };
+		573790C416B569EF0F2401F5 /* Note.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Note.cpp; sourceTree = "<group>"; };
+		59BEAED489DBE3270520B5EF /* functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
+		714C6F3D7812703DB0117310 /* Instrument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Instrument.h; sourceTree = "<group>"; };
+		7BC2E65A5E699A5E5D834CA2 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /Library/Frameworks/QtCore.framework; sourceTree = "<absolute>"; };
+		81576A62DA4B440CFB5ECF07 /* ChordDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChordDatabase.cpp; sourceTree = "<group>"; };
+		9410D278A3444820CA3BD8DD /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		9B36DA7E32F0304E780E7972 /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = /Library/Frameworks/QtGui.framework; sourceTree = "<absolute>"; };
+		9D64C0C255BFD5FF4289FE17 /* resource.qrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = resource.qrc; sourceTree = "<group>"; };
+		A7901B8CA97F36E322E0D793 /* Chord.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Chord.cpp; sourceTree = "<group>"; };
+		AB241F823D3821A41AAC4BDE /* mainwindow.ui */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = mainwindow.ui; sourceTree = "<group>"; };
+		AFB98B37FF0012B837A2131C /* ui_mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ui_mainwindow.h; sourceTree = "<group>"; };
+		B103E39B29B1E6093458E86D /* ChordDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChordDatabase.h; sourceTree = "<group>"; };
+		C63FA392C61F27B1B13369C1 /* mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainwindow.h; sourceTree = "<group>"; };
+		EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mainwindow.cpp; sourceTree = "<group>"; };
+		F5D71C58DF87D813BF3DD2EC /* CustomGuitarChords.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomGuitarChords.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A1043669E6E5A7426EA502A /* Frameworks & Libraries */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				501667F26B3C1FF6767A7C12 /* QtGui.framework in Frameworks & Libraries */,
+				069D05B0128AE5DC7EE31738 /* QtCore.framework in Frameworks & Libraries */,
+			);
+			name = "Frameworks & Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05596AB53D8D521C69802C27 /* CustomChords */ = {
+			isa = PBXGroup;
+			children = (
+				FB61758D0F0FDA4BA867C3D5 /* Sources */,
+				46E892BBB6BB6952967E0561 /* Temporary Sources */,
+				883D7615C4D2DE3FA1218F12 /* Headers */,
+				7CABE3C80E79AD2B307756D2 /* Sources [qmake] */,
+				52C235EBF1C9B07808119459 /* Sources [RCC] */,
+				EEC299C65D5017EB9DD513B0 /* Sources [UIC] */,
+				ED1E82605DD74B483AF3C982 /* External Frameworks and Libraries */,
+				2078B08F132B042200B48F04 /* Products */,
+			);
+			name = CustomChords;
+			sourceTree = "<group>";
+		};
+		2078B08F132B042200B48F04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2078B08E132B042200B48F04 /* CustomChords.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46E892BBB6BB6952967E0561 /* Temporary Sources */ = {
+			isa = PBXGroup;
+			children = (
+				336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */,
+				29948BD57108802D93A2DD03 /* qrc_resource.cpp */,
+				AFB98B37FF0012B837A2131C /* ui_mainwindow.h */,
+			);
+			name = "Temporary Sources";
+			sourceTree = "<group>";
+		};
+		52C235EBF1C9B07808119459 /* Sources [RCC] */ = {
+			isa = PBXGroup;
+			children = (
+				9D64C0C255BFD5FF4289FE17 /* resource.qrc */,
+			);
+			name = "Sources [RCC]";
+			sourceTree = "<group>";
+		};
+		7CABE3C80E79AD2B307756D2 /* Sources [qmake] */ = {
+			isa = PBXGroup;
+			children = (
+				358CA00F6C996836E4634E42 /* CustomChords.pro */,
+			);
+			name = "Sources [qmake]";
+			sourceTree = "<group>";
+		};
+		883D7615C4D2DE3FA1218F12 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C63FA392C61F27B1B13369C1 /* mainwindow.h */,
+				34460E105D18DEAC1FF7EFCE /* Chord.h */,
+				0497F4AEE2EDD2F4380CDFFD /* Note.h */,
+				714C6F3D7812703DB0117310 /* Instrument.h */,
+				3109D2A9322E64919D7F69A9 /* InstrumentDatabase.h */,
+				B103E39B29B1E6093458E86D /* ChordDatabase.h */,
+				F5D71C58DF87D813BF3DD2EC /* CustomGuitarChords.h */,
+				9410D278A3444820CA3BD8DD /* functions.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		ED1E82605DD74B483AF3C982 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				9B36DA7E32F0304E780E7972 /* QtGui.framework */,
+				7BC2E65A5E699A5E5D834CA2 /* QtCore.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		EEC299C65D5017EB9DD513B0 /* Sources [UIC] */ = {
+			isa = PBXGroup;
+			children = (
+				AB241F823D3821A41AAC4BDE /* mainwindow.ui */,
+			);
+			name = "Sources [UIC]";
+			sourceTree = "<group>";
+		};
+		FB61758D0F0FDA4BA867C3D5 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				118FCBAABA162BA17933C789 /* main.cpp */,
+				EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */,
+				A7901B8CA97F36E322E0D793 /* Chord.cpp */,
+				573790C416B569EF0F2401F5 /* Note.cpp */,
+				002913C61B8614F8F5DE4E95 /* Instrument.cpp */,
+				2C11F482EDB667750EA92151 /* InstrumentDatabase.cpp */,
+				81576A62DA4B440CFB5ECF07 /* ChordDatabase.cpp */,
+				59BEAED489DBE3270520B5EF /* functions.cpp */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1191686C3B8799820BAB0585 /* CustomChords */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2078B0A4132B043F00B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */;
+			buildPhases = (
+				D7BA7D76DAB5DD13389D6332 /* Qt Qmake */,
+				A0A52A2ADF7A1E2A99738674 /* Qt Preprocessors */,
+				F6069D5A5DA8AA28EDB8B3C6 /* Project Copy */,
+				C29B8785722055ED95EF7B57 /* Build Sources */,
+				2A1043669E6E5A7426EA502A /* Frameworks & Libraries */,
+				3787F99312C85FF0073FD7BA /* Bundle Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CustomChords;
+			productName = CustomChords;
+			productReference = 2078B08E132B042200B48F04 /* CustomChords.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91B15E841AA80083484172DE /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 2A951308CDB28F104D0A4BD2 /* Build configuration list for PBXProject "CustomChords" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 05596AB53D8D521C69802C27 /* CustomChords */;
+			productRefGroup = 2078B08F132B042200B48F04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1191686C3B8799820BAB0585 /* CustomChords */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3787F99312C85FF0073FD7BA /* Bundle Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Bundle Resources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A0A52A2ADF7A1E2A99738674 /* Qt Preprocessors */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Qt Preprocessors";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords -f 'CustomChords.xcodeproj/qt_preprocess.mak'";
+		};
+		D7BA7D76DAB5DD13389D6332 /* Qt Qmake */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Qt Qmake";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords -f 'CustomChords.xcodeproj/qt_makeqmake.mak'";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C29B8785722055ED95EF7B57 /* Build Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B093CA6F071B023A473CED0 /* main.cpp in Build Sources */,
+				462C0F34BBEF2375A9469BB5 /* mainwindow.cpp in Build Sources */,
+				225218CF5222249E27A57DF4 /* Chord.cpp in Build Sources */,
+				B41A09D795749A35C46746A8 /* Note.cpp in Build Sources */,
+				381E527741739AE09CB39E31 /* Instrument.cpp in Build Sources */,
+				6FFAA7D9485D67F5AD838ADF /* InstrumentDatabase.cpp in Build Sources */,
+				AFE6A7ED8305A32C95EADD16 /* ChordDatabase.cpp in Build Sources */,
+				06323BB5D9C28411BA6122AD /* functions.cpp in Build Sources */,
+				26C2BED6C570C95F5243C556 /* moc_mainwindow.cpp in Build Sources */,
+				00E23C7E6B2DA71E5ACA9686 /* qrc_resource.cpp in Build Sources */,
+			);
+			name = "Build Sources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2078B098132B042300B48F04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/QtCore.framework/Versions/4/Headers,
+					/usr/include/QtCore,
+					/Library/Frameworks/QtGui.framework/Versions/4/Headers,
+					/usr/include/QtGui,
+					/usr/include,
+					.,
+					.,
+					/usr/local/include,
+					/System/Library/Frameworks/CarbonCore.framework/Headers,
+					"/usr/local/Qt4.7/mkspecs/macx-xcode",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LEXFLAGS = "";
+				LIBRARY_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_LDFLAGS = (
+					"-headerpad_max_install_names",
+					"-L/Library/Frameworks",
+					"-F/Library/Frameworks",
+					"-L/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+					"-F/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = CustomChords;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				YACCFLAGS = "-d";
+			};
+			name = Debug;
+		};
+		2078B099132B042300B48F04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/QtCore.framework/Versions/4/Headers,
+					/usr/include/QtCore,
+					/Library/Frameworks/QtGui.framework/Versions/4/Headers,
+					/usr/include/QtGui,
+					/usr/include,
+					.,
+					.,
+					/usr/local/include,
+					/System/Library/Frameworks/CarbonCore.framework/Headers,
+					"/usr/local/Qt4.7/mkspecs/macx-xcode",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LEXFLAGS = "";
+				LIBRARY_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_LDFLAGS = (
+					"-headerpad_max_install_names",
+					"-L/Library/Frameworks",
+					"-F/Library/Frameworks",
+					"-L/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+					"-F/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = CustomChords;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				YACCFLAGS = "-d";
+			};
+			name = Release;
+		};
+		2078B09A132B042300B48F04 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
+				DYLIB_COMPATIBILITY_VERSION = 1.0;
+				DYLIB_CURRENT_VERSION = 1.0.0;
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/QtCore.framework/Versions/4/Headers,
+					/usr/include/QtCore,
+					/Library/Frameworks/QtGui.framework/Versions/4/Headers,
+					/usr/include/QtGui,
+					/usr/include,
+					.,
+					.,
+					/usr/local/include,
+					/System/Library/Frameworks/CarbonCore.framework/Headers,
+					"/usr/local/Qt4.7/mkspecs/macx-xcode",
+				);
+				INFOPLIST_FILE = Info.plist;
+				LEXFLAGS = "";
+				LIBRARY_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-pipe",
+					"-g",
+					"-Wall",
+					"-W",
+					"-DQT_GUI_LIB",
+					"-DQT_CORE_LIB",
+					"-DQT_SHARED",
+				);
+				OTHER_LDFLAGS = (
+					"-headerpad_max_install_names",
+					"-L/Library/Frameworks",
+					"-F/Library/Frameworks",
+					"-L/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+					"-F/tmp/qt-stuff-6474/source/qt-everywhere-opensource-src-4.7.0/lib",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = CustomChords;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "";
+				YACCFLAGS = "-d";
+			};
+			name = Default;
+		};
+		8DB1DD96F65B1BF1FFC506E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+			};
+			name = Debug;
+		};
+		95E1EB2E5DDD587BE5B3E548 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2078B0A4132B043F00B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2078B098132B042300B48F04 /* Debug */,
+				2078B099132B042300B48F04 /* Release */,
+				2078B09A132B042300B48F04 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		2A951308CDB28F104D0A4BD2 /* Build configuration list for PBXProject "CustomChords" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB1DD96F65B1BF1FFC506E0 /* Debug */,
+				95E1EB2E5DDD587BE5B3E548 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91B15E841AA80083484172DE /* Project object */;
+}

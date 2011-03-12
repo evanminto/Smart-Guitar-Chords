@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->InstrumentTree->setModel(fileModel);
     ui->InstrumentTree->setRootIndex(fileModel->index(library));
+    inst_dir = QDir(library);
 
     // SET UP CHORD DISPLAY
 
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->ChordTree->setModel(fileModel);
     ui->ChordTree->setRootIndex(fileModel->index(library));
+    chord_dir = QDir(library);
 }
 
 MainWindow::~MainWindow()
@@ -251,7 +253,7 @@ void MainWindow::loadChords(const string& file, Chord &ch)
 
 void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
 {
-    //ui->filepath->setText(QDir::homePath()+"/Library/SmartGuitarChords/Instruments/"+index.data().toString());
+    inst_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Instruments/"+index.data().toString());
 
     loadInstruments(QDir::homePath().toStdString()+"/Library/SmartGuitarChords/Instruments/"+index.data().toString().toStdString(), current_inst);
     printInstInfo();
@@ -259,7 +261,7 @@ void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
 
 void MainWindow::on_ChordTree_clicked(QModelIndex index)
 {
-    //ui->filepath2->setText(QDir::homePath()+"/Library/SmartGuitarChords/Chords/"+index.data().toString());
+    chord_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Chords/"+index.data().toString());
 
     loadChords(QDir::homePath().toStdString()+"/Library/SmartGuitarChords/Chords/"+index.data().toString().toStdString(), current_chord);
     printInstInfo();
@@ -268,11 +270,69 @@ void MainWindow::on_ChordTree_clicked(QModelIndex index)
 
 void MainWindow::printInstInfo()
 {
-    ui->filepath->setText(QString::fromStdString(current_inst.getName()));
+    QString inst_data;
+
+    inst_data = QString::fromStdString(current_inst.getName());
+    inst_data.append(" | ");
+    inst_data.append(QString::number(current_inst.getNumStrings()));
+    inst_data.append(" strings | ");
+
+    vector <int> tuning = current_inst.getTuning();
+
+    for (int i=0; i<tuning.size(); i++)
+        inst_data.append(QString::fromStdString(tuningIntToStr(tuning[i], 'b') + " "));
+
+    ui->filepath->setText(inst_data);
 }
 
 void MainWindow::printChordInfo()
 {
     if (current_chord.isValid())
-        ui->filepath2->setText(QString::fromStdString(current_chord.getName()));
+    {
+        QString chord_data;
+
+        chord_data = QString::fromStdString(current_chord.getName());
+        chord_data.append(" | ");
+
+        if (current_chord.getCapo() > 0)
+        {
+            chord_data.append("Capo ");
+            chord_data.append(QString::number(current_chord.getCapo()));
+            chord_data.append(" | ");
+        }
+
+        vector <string> tab = current_chord.getTab();
+
+        for (int i=0; i<tab.size(); i++)
+            chord_data.append(QString::fromStdString(tab[i] + " "));
+
+        ui->filepath2->setText(chord_data);
+    }
 }
+
+
+/*
+void MainWindow::on_inst_folder_button_clicked()
+{
+
+    This function doesn't work yet because Qt is not saving/displaying new widgets.
+    I am currently working on finding a fix for this problem. Any suggestions would
+    be much appreciated.
+
+     if (NAME IS NOT EMPTY && FOLDER DOESN'T ALREADY EXIST)
+     {
+        inst_dir.mkdir( NAME PROVIDED BY inst_folder_name );
+        ui->statusbar->setText(QString::fromStdString("Saved folder NAME..."));
+     }
+
+     else if (NAME IS EMPTY)
+     {
+        ui->statusbar->setText(QString::fromStdString("ERROR: Name field is empty!..."));
+     }
+
+     else if (FOLDER ALREADY EXISTS)
+     {
+        ui->statusbar->setText(QString::fromStdString("ERROR: Folder already exists!..."));
+     }
+}
+*/
