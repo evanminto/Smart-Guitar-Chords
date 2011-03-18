@@ -9,6 +9,6 @@ To compile and run Custom Guitar Chords, the project should be opened in Nokia's
 
 When you open this test version of the program, you will only be able to read text files from the CustomGuitarChords library, which requires the upcoming write function to be completed before there can actually be readable files in there.
 
-NOTE: I have worked out an early version of the folder manipulation functions, but Qt is not saving/displaying new widgets correctly, so I can't implement the feature just yet. Any help on fixing this bug would be much appreciated!
+However, you can manipulate folders by choosing your folder name, then clicking "Create Folder." "Delete Selected" will attempt to delete whatever file or folder you are pointing to, and it will not be able to delete folders with files in them.
 
 Currently, the program is only designed for Mac OS X, though small changes in how it deals with library files should make for a quick switch to other platforms in the future.
