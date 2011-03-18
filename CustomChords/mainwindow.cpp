@@ -253,19 +253,126 @@ void MainWindow::loadChords(const string& file, Chord &ch)
 
 void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
 {
-    inst_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Instruments/"+index.data().toString());
+    QString path = "";
+    QModelIndex i(index);
 
-    loadInstruments(QDir::homePath().toStdString()+"/Library/SmartGuitarChords/Instruments/"+index.data().toString().toStdString(), current_inst);
-    printInstInfo();
+    while (i.parent().data().toString() != "Instruments")
+    {
+        path = path + i.parent().data().toString() + "/";
+        i = i.parent();
+    }
+
+    inst_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Instruments/"+path+index.data().toString());
+
+    if (inst_dir.exists())
+    {
+        if (inst_dir.count() > 2)
+            ui->del_inst_button->setEnabled(false);
+
+        else
+            ui->del_inst_button->setEnabled(true);
+
+        ui->statusbar->setText("\"" + index.data().toString() + "\" is a folder containing "+QString::number(inst_dir.count()-2)+" item(s).");
+    }
+
+    else if (inst_dir.exists(inst_dir.absolutePath()))
+    {
+        ui->del_inst_button->setEnabled(true);
+
+        loadInstruments(inst_dir.absolutePath().toStdString(), current_inst);
+        printInstInfo();
+
+        ui->statusbar->setText(index.data().toString() + " is a valid instrument.");
+    }
+
+    else
+    {
+        ui->del_inst_button->setEnabled(false);
+        ui->statusbar->setText("No valid file/folder selected.");
+    }
+
 }
 
 void MainWindow::on_ChordTree_clicked(QModelIndex index)
 {
-    chord_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Chords/"+index.data().toString());
+    QString path = "";
+    QModelIndex i(index);
 
-    loadChords(QDir::homePath().toStdString()+"/Library/SmartGuitarChords/Chords/"+index.data().toString().toStdString(), current_chord);
-    printInstInfo();
-    printChordInfo();
+    while (i.parent().data().toString() != "Chords")
+    {
+        path = path + i.parent().data().toString() + "/";
+        i = i.parent();
+    }
+
+    chord_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Chords/"+path+index.data().toString());
+
+    if (chord_dir.exists())
+    {
+        if (chord_dir.count() > 2)
+            ui->del_chord_button->setEnabled(false);
+
+        else
+            ui->del_chord_button->setEnabled(true);
+
+        ui->statusbar->setText("\"" + index.data().toString() + "\" is a folder containing "+QString::number(chord_dir.count()-2)+" chord(s).");
+    }
+
+    else if (chord_dir.exists(chord_dir.absolutePath()))
+    {
+        ui->del_chord_button->setEnabled(true);
+
+        loadChords(chord_dir.absolutePath().toStdString(), current_chord);
+        printInstInfo();
+        printChordInfo();
+
+        ui->statusbar->setText(index.data().toString() + " is a valid chord.");
+    }
+
+    else
+    {
+        ui->del_inst_button->setEnabled(false);
+        ui->statusbar->setText("No valid file/folder selected.");
+    }
+
+
+
+/*
+
+    QString path = "";
+    QModelIndex i(index);
+
+    while (i.parent().data().toString() != "Chords")
+    {
+        path = path + i.parent().data().toString() + "/";
+        i = i.parent();
+    }
+
+    chord_dir = QDir(QDir::homePath()+"/Library/SmartGuitarChords/Chords/"+path+index.data().toString());
+
+    if (chord_dir.exists())
+    {
+        ui->del_chord_button->setEnabled(false);
+        ui->statusbar->setText("\"" + index.data().toString() + "\" is a folder.");
+    }
+
+    else if (chord_dir.exists(chord_dir.absolutePath()))
+    {
+        ui->del_chord_button->setEnabled(true);
+
+        loadChords(chord_dir.absolutePath().toStdString(), current_chord);
+        printInstInfo();
+        printChordInfo();
+
+        ui->statusbar->setText(index.data().toString() + " is a valid file.");
+    }
+
+    else
+    {
+        ui->del_chord_button->setEnabled(false);
+        ui->statusbar->setText("No valid file/folder selected.");
+    }
+
+    */
 }
 
 void MainWindow::printInstInfo()
@@ -279,7 +386,7 @@ void MainWindow::printInstInfo()
 
     vector <int> tuning = current_inst.getTuning();
 
-    for (int i=0; i<tuning.size(); i++)
+    for (unsigned int i=0; i<tuning.size(); i++)
         inst_data.append(QString::fromStdString(tuningIntToStr(tuning[i], 'b') + " "));
 
     ui->filepath->setText(inst_data);
@@ -287,6 +394,7 @@ void MainWindow::printInstInfo()
 
 void MainWindow::printChordInfo()
 {
+    ui->filepath2->setText(chord_dir.absolutePath());
     if (current_chord.isValid())
     {
         QString chord_data;
@@ -303,7 +411,7 @@ void MainWindow::printChordInfo()
 
         vector <string> tab = current_chord.getTab();
 
-        for (int i=0; i<tab.size(); i++)
+        for (unsigned int i=0; i<tab.size(); i++)
             chord_data.append(QString::fromStdString(tab[i] + " "));
 
         ui->filepath2->setText(chord_data);
@@ -311,28 +419,111 @@ void MainWindow::printChordInfo()
 }
 
 
-/*
 void MainWindow::on_inst_folder_button_clicked()
 {
+    bool success = false;
 
-    This function doesn't work yet because Qt is not saving/displaying new widgets.
-    I am currently working on finding a fix for this problem. Any suggestions would
-    be much appreciated.
+    QDir parent = inst_dir;
 
-     if (NAME IS NOT EMPTY && FOLDER DOESN'T ALREADY EXIST)
+    if (!parent.exists())
+        parent.cdUp();
+
+    if (ui->inst_folder_name->text() != "" &&
+        !parent.exists(ui->inst_folder_name->text()))
      {
-        inst_dir.mkdir( NAME PROVIDED BY inst_folder_name );
-        ui->statusbar->setText(QString::fromStdString("Saved folder NAME..."));
-     }
+        success = parent.mkdir( ui->inst_folder_name->text() );
 
-     else if (NAME IS EMPTY)
-     {
-        ui->statusbar->setText(QString::fromStdString("ERROR: Name field is empty!..."));
-     }
+        if (success)
+            ui->statusbar->setText("Saved folder " + ui->inst_folder_name->text() + " in Instruments.");
 
-     else if (FOLDER ALREADY EXISTS)
-     {
-        ui->statusbar->setText(QString::fromStdString("ERROR: Folder already exists!..."));
+        else
+            ui->statusbar->setText("Failed to save folder.");
      }
 }
-*/
+
+void MainWindow::on_chord_folder_button_clicked()
+{
+    bool success = false;
+
+    QDir parent = chord_dir;
+
+    if (!parent.exists())
+        parent.cdUp();
+
+    if (ui->chord_folder_name->text() != "" &&
+        !parent.exists(ui->chord_folder_name->text()))
+     {
+        success = parent.mkdir( ui->chord_folder_name->text() );
+
+        if (success)
+            ui->statusbar->setText("Saved folder " + ui->chord_folder_name->text() + " in Chords.");
+
+        else
+            ui->statusbar->setText("Failed to save folder.");
+     }
+}
+
+void MainWindow::on_del_inst_button_clicked()
+{
+    bool success = false;
+
+    if (inst_dir.exists() && inst_dir.count() <= 2)
+    {
+        success = inst_dir.rmdir(inst_dir.absolutePath());
+
+        if (success)
+            ui->statusbar->setText("Successfully deleted folder.");
+        else
+            ui->statusbar->setText("Folder deletion failed!");
+
+        return;
+    }
+
+    if (QMessageBox::question(this,
+                              tr("Delete file?"),
+                              tr("Are you sure you want to delete this file? This cannot be undone."),
+                              QMessageBox::Yes,
+                              QMessageBox::No,
+                              QMessageBox::NoButton) == QMessageBox::Yes)
+    {
+        success = inst_dir.remove(inst_dir.absolutePath());
+    }
+
+    if (success)
+        ui->statusbar->setText("Successfully deleted file.");
+    else
+        ui->statusbar->setText("File deletion failed!");
+}
+
+
+void MainWindow::on_del_chord_button_clicked()
+{
+    bool success = false;
+
+    if (chord_dir.exists() && chord_dir.count() <= 2)
+    {
+        success = chord_dir.rmdir(chord_dir.absolutePath());
+
+        if (success)
+            ui->statusbar->setText("Successfully deleted folder.");
+        else
+            ui->statusbar->setText("Folder deletion failed!");
+
+        return;
+    }
+
+    if (QMessageBox::question(this,
+                              tr("Delete file?"),
+                              tr("Are you sure you want to delete this file? This cannot be undone."),
+                              QMessageBox::Yes,
+                              QMessageBox::No,
+                              QMessageBox::NoButton) == QMessageBox::Yes)
+    {
+        success = chord_dir.remove(chord_dir.absolutePath());
+    }
+
+    if (success)
+        ui->statusbar->setText("Successfully deleted file.");
+    else
+        ui->statusbar->setText("File deletion failed!");
+}

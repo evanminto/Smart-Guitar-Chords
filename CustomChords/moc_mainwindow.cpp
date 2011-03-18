@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri Mar 11 20:30:17 2011
+** Created: Wed Mar 16 14:12:09 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,14 +31,20 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      18,   12,   11,   11, 0x08,
-      52,   12,   11,   11, 0x08,
+      12,   11,   11,   11, 0x08,
+      41,   11,   11,   11, 0x08,
+      74,   11,   11,   11, 0x08,
+     112,  106,   11,   11, 0x08,
+     146,  106,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0index\0on_ChordTree_clicked(QModelIndex)\0"
+    "MainWindow\0\0on_del_inst_button_clicked()\0"
+    "on_chord_folder_button_clicked()\0"
+    "on_inst_folder_button_clicked()\0index\0"
+    "on_ChordTree_clicked(QModelIndex)\0"
     "on_InstrumentTree_clicked(QModelIndex)\0"
 };
 
@@ -71,11 +77,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_ChordTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
-        case 1: on_InstrumentTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
+        case 0: on_del_inst_button_clicked(); break;
+        case 1: on_chord_folder_button_clicked(); break;
+        case 2: on_inst_folder_button_clicked(); break;
+        case 3: on_ChordTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
+        case 4: on_InstrumentTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 5;
     }
     return _id;
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Mar 11 20:30:17 2011
+** Created: Wed Mar 16 14:12:09 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -17,8 +17,10 @@
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
+#include <QtGui/QLineEdit>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenuBar>
+#include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
 #include <QtGui/QToolBar>
 #include <QtGui/QTreeView>
@@ -42,6 +44,12 @@ public:
     QLabel *filepath;
     QLabel *filepath2;
     QLabel *statusbar;
+    QPushButton *chord_folder_button;
+    QPushButton *inst_folder_button;
+    QLineEdit *inst_folder_name;
+    QLineEdit *chord_folder_name;
+    QPushButton *del_inst_button;
+    QPushButton *del_chord_button;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -50,12 +58,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(796, 536);
+        MainWindow->resize(781, 479);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(30, 60, 731, 361));
+        layoutWidget->setGeometry(QRect(30, 130, 731, 251));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -71,7 +79,7 @@ public:
 
         InstrumentTree = new QTreeView(layoutWidget);
         InstrumentTree->setObjectName(QString::fromUtf8("InstrumentTree"));
-        InstrumentTree->header()->setVisible(false);
+        InstrumentTree->header()->setVisible(true);
         InstrumentTree->header()->setDefaultSectionSize(150);
         InstrumentTree->header()->setStretchLastSection(true);
 
@@ -99,17 +107,35 @@ public:
 
         filepath = new QLabel(centralWidget);
         filepath->setObjectName(QString::fromUtf8("filepath"));
-        filepath->setGeometry(QRect(40, 0, 451, 16));
+        filepath->setGeometry(QRect(40, 0, 721, 16));
         filepath2 = new QLabel(centralWidget);
         filepath2->setObjectName(QString::fromUtf8("filepath2"));
-        filepath2->setGeometry(QRect(40, 30, 451, 16));
+        filepath2->setGeometry(QRect(40, 26, 721, 16));
         statusbar = new QLabel(centralWidget);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         statusbar->setGeometry(QRect(30, 430, 731, 16));
+        chord_folder_button = new QPushButton(centralWidget);
+        chord_folder_button->setObjectName(QString::fromUtf8("chord_folder_button"));
+        chord_folder_button->setGeometry(QRect(580, 60, 181, 31));
+        inst_folder_button = new QPushButton(centralWidget);
+        inst_folder_button->setObjectName(QString::fromUtf8("inst_folder_button"));
+        inst_folder_button->setGeometry(QRect(210, 60, 181, 31));
+        inst_folder_name = new QLineEdit(centralWidget);
+        inst_folder_name->setObjectName(QString::fromUtf8("inst_folder_name"));
+        inst_folder_name->setGeometry(QRect(40, 60, 161, 22));
+        chord_folder_name = new QLineEdit(centralWidget);
+        chord_folder_name->setObjectName(QString::fromUtf8("chord_folder_name"));
+        chord_folder_name->setGeometry(QRect(410, 60, 161, 22));
+        del_inst_button = new QPushButton(centralWidget);
+        del_inst_button->setObjectName(QString::fromUtf8("del_inst_button"));
+        del_inst_button->setGeometry(QRect(210, 90, 181, 31));
+        del_chord_button = new QPushButton(centralWidget);
+        del_chord_button->setObjectName(QString::fromUtf8("del_chord_button"));
+        del_chord_button->setGeometry(QRect(580, 90, 181, 31));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 796, 22));
+        menuBar->setGeometry(QRect(0, 0, 781, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -131,6 +157,10 @@ public:
         filepath->setText(QString());
         filepath2->setText(QString());
         statusbar->setText(QString());
+        chord_folder_button->setText(QApplication::translate("MainWindow", "Create Folder", 0, QApplication::UnicodeUTF8));
+        inst_folder_button->setText(QApplication::translate("MainWindow", "Create Folder", 0, QApplication::UnicodeUTF8));
+        del_inst_button->setText(QApplication::translate("MainWindow", "Delete Selected", 0, QApplication::UnicodeUTF8));
+        del_chord_button->setText(QApplication::translate("MainWindow", "Delete Selected", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

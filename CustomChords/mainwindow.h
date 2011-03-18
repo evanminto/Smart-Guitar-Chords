@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QModelIndex>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -37,7 +38,10 @@ private:
 private slots:
 
 private slots:
-    //void on_inst_folder_button_clicked();
+    void on_del_chord_button_clicked();
+    void on_del_inst_button_clicked();
+    void on_chord_folder_button_clicked();
+    void on_inst_folder_button_clicked();
     void on_ChordTree_clicked(QModelIndex index);
     void on_InstrumentTree_clicked(QModelIndex index);
 };

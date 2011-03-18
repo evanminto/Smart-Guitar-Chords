@@ -10,7 +10,7 @@
 		00E23C7E6B2DA71E5ACA9686 /* qrc_resource.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 29948BD57108802D93A2DD03 /* qrc_resource.cpp */; settings = {ATTRIBUTES = (); }; };
 		06323BB5D9C28411BA6122AD /* functions.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 59BEAED489DBE3270520B5EF /* functions.cpp */; settings = {ATTRIBUTES = (); }; };
 		069D05B0128AE5DC7EE31738 /* QtCore.framework in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 7BC2E65A5E699A5E5D834CA2 /* QtCore.framework */; };
-		2078B091132B042200B48F04 /* CustomChords.app in Project Copy */ = {isa = PBXBuildFile; fileRef = 2078B08E132B042200B48F04 /* CustomChords.app */; };
+		2078B0AB132FB28F00B48F04 /* CustomChords.app in Project Copy */ = {isa = PBXBuildFile; fileRef = 2078B0A8132FB28F00B48F04 /* CustomChords.app */; };
 		225218CF5222249E27A57DF4 /* Chord.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = A7901B8CA97F36E322E0D793 /* Chord.cpp */; settings = {ATTRIBUTES = (); }; };
 		26C2BED6C570C95F5243C556 /* moc_mainwindow.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
 		2B093CA6F071B023A473CED0 /* main.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 118FCBAABA162BA17933C789 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
@@ -29,7 +29,7 @@
 			dstPath = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
 			dstSubfolderSpec = 0;
 			files = (
-				2078B091132B042200B48F04 /* CustomChords.app in Project Copy */,
+				2078B0AB132FB28F00B48F04 /* CustomChords.app in Project Copy */,
 			);
 			name = "Project Copy";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 		002913C61B8614F8F5DE4E95 /* Instrument.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Instrument.cpp; sourceTree = "<group>"; };
 		0497F4AEE2EDD2F4380CDFFD /* Note.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		118FCBAABA162BA17933C789 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		2078B08E132B042200B48F04 /* CustomChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2078B0A8132FB28F00B48F04 /* CustomChords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomChords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29948BD57108802D93A2DD03 /* qrc_resource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qrc_resource.cpp; sourceTree = "<group>"; };
 		2C11F482EDB667750EA92151 /* InstrumentDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = InstrumentDatabase.cpp; sourceTree = "<group>"; };
 		3109D2A9322E64919D7F69A9 /* InstrumentDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstrumentDatabase.h; sourceTree = "<group>"; };
@@ -88,15 +88,15 @@
 				52C235EBF1C9B07808119459 /* Sources [RCC] */,
 				EEC299C65D5017EB9DD513B0 /* Sources [UIC] */,
 				ED1E82605DD74B483AF3C982 /* External Frameworks and Libraries */,
-				2078B08F132B042200B48F04 /* Products */,
+				2078B0A9132FB28F00B48F04 /* Products */,
 			);
 			name = CustomChords;
 			sourceTree = "<group>";
 		};
-		2078B08F132B042200B48F04 /* Products */ = {
+		2078B0A9132FB28F00B48F04 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2078B08E132B042200B48F04 /* CustomChords.app */,
+				2078B0A8132FB28F00B48F04 /* CustomChords.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 /* Begin PBXNativeTarget section */
 		1191686C3B8799820BAB0585 /* CustomChords */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2078B0A4132B043F00B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */;
+			buildConfigurationList = 2078B0C1132FB29800B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */;
 			buildPhases = (
 				D7BA7D76DAB5DD13389D6332 /* Qt Qmake */,
 				A0A52A2ADF7A1E2A99738674 /* Qt Preprocessors */,
@@ -194,7 +194,7 @@
 			);
 			name = CustomChords;
 			productName = CustomChords;
-			productReference = 2078B08E132B042200B48F04 /* CustomChords.app */;
+			productReference = 2078B0A8132FB28F00B48F04 /* CustomChords.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +206,7 @@
 			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 05596AB53D8D521C69802C27 /* CustomChords */;
-			productRefGroup = 2078B08F132B042200B48F04 /* Products */;
+			productRefGroup = 2078B0A9132FB28F00B48F04 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -271,7 +271,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2078B098132B042300B48F04 /* Debug */ = {
+		2078B0B2132FB29000B48F04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
@@ -333,7 +333,7 @@
 			};
 			name = Debug;
 		};
-		2078B099132B042300B48F04 /* Release */ = {
+		2078B0B3132FB29000B48F04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
@@ -394,7 +394,7 @@
 			};
 			name = Release;
 		};
-		2078B09A132B042300B48F04 /* Default */ = {
+		2078B0B4132FB29000B48F04 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_ROOT = "/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords";
@@ -473,12 +473,12 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2078B0A4132B043F00B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */ = {
+		2078B0C1132FB29800B48F04 /* Build configuration list for PBXNativeTarget "CustomChords" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2078B098132B042300B48F04 /* Debug */,
-				2078B099132B042300B48F04 /* Release */,
-				2078B09A132B042300B48F04 /* Default */,
+				2078B0B2132FB29000B48F04 /* Debug */,
+				2078B0B3132FB29000B48F04 /* Release */,
+				2078B0B4132FB29000B48F04 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
