@@ -34,10 +34,24 @@ private:
     QDir chord_dir;
     void printInstInfo();
     void printChordInfo();
+    void enableChordForm();
+    void enableInstForm();
+    void disableChordForm();
+    void disableInstForm();
+    void wipeChordForm();
+    void wipeInstForm();
+
+    string findInst(string search, QDir d);
 
 private slots:
 
 private slots:
+    void on_chord_cancel_button_clicked();
+    void on_inst_cancel_button_clicked();
+    void on_chord_create_button_clicked();
+    void on_inst_create_button_clicked();
+    void on_chord_save_button_clicked();
+    void on_inst_save_button_clicked();
     void on_del_chord_button_clicked();
     void on_del_inst_button_clicked();
     void on_chord_folder_button_clicked();

@@ -31,6 +31,8 @@ private:
 
     bool valid;
 
+    Instrument * getInstrumentPtr() const { return inst; }
+
 public:
     Chord();
     Chord(Chord const &c);
@@ -40,6 +42,7 @@ public:
 
     std::string getName() const { return name; }
     Instrument getInstrument() const { return *inst; }
+    bool isInstrumentSet() const { return (inst != NULL); }
     int getCapo() const { return capo; }
     std::vector <std::string> getTab() const { return tab; }
     std::vector <Note> getNotes() const { return notes; }
@@ -53,7 +56,7 @@ public:
 
     int getID() const { return id; }
 
-    int isValid() const { return valid; }
+    bool isValid() const { return valid; }
 
     void setID(int i) { id = i; }
     void putName(std::string s) { name = s; };

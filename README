@@ -1,5 +1,5 @@
 ***************************************
-*       Custom Guitar Chords          *
+*        Smart Guitar Chords          *
 *         (tentative name)            *
 ***************************************
 
@@ -7,8 +7,23 @@ Designed by Evan Minto, as a part of the Rensselaer Center for Open-Source Softw
 
 To compile and run Custom Guitar Chords, the project should be opened in Nokia's Qt Creator program, and built from there.
 
-When you open this test version of the program, you will only be able to read text files from the CustomGuitarChords library, which requires the upcoming write function to be completed before there can actually be readable files in there.
+Smart Guitar Chords can now create, edit, and save instruments and chords! However, the functionality is still rather rough, and might not be too simple for end-users yet. The instructions are below:
 
-However, you can manipulate folders by choosing your folder name, then clicking "Create Folder." "Delete Selected" will attempt to delete whatever file or folder you are pointing to, and it will not be able to delete folders with files in them.
+- Selecting an existing instrument/chord will make its information appear in the text boxes at the top of the window.
+- In order to edit that instrument/chord, you will need to hit the "Edit Instrument"/"Edit Chord" button, which will enable the fields for the respective file.
+- From there, you can save your file, or cancel (which will not save, and will return you to read-only mode).
+- NOTE that if you save a file with a new name, it will create a new file. It will NOT modify the old one.
+- When you hit "Create New", the fields will be enabled and wiped, allowing you to input new information and save it (or cancel the operation).
+
+Notes on input format:
+- Currently the Tuning and Tab fields only accept very specific input formats, though they will be greatly expanded in the future.
+- Instrument Tuning accepts capital letters (with sharp/flat modifiers) separated by spaces, not exceeding the number of strings.
+	- i.e., "E A D G B E", "C Gb A# D"
+- Chord Tab accepts numbers 0-9 and the letter x separated by spaces, not exceeding the number of strings.
+	- i.e., "3 2 0 0 0 3", "x 0 2 2 2 0"
+- Both Tuning and Tab reads from the low-E (or equivalent) string on the left to the high-E (or equivalent) string on the right.
+- There are currently very few mechanisms to stop you from saving if your input is in the wrong format. The only one I have implemented so far is a check to make sure your instrument/chord name field isn't empty.
+
+You can also manipulate folders by choosing your folder name, then clicking "Create Folder." "Delete Selected" will attempt to delete whatever file or folder you are pointing to, and it will not be able to delete folders with files in them. Please note that folder deletion still has a few bugs that may cause a folder to fail to delete.
 
 Currently, the program is only designed for Mac OS X, though small changes in how it deals with library files should make for a quick switch to other platforms in the future.

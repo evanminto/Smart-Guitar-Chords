@@ -29,6 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->ChordTree->setModel(fileModel);
     ui->ChordTree->setRootIndex(fileModel->index(library));
     chord_dir = QDir(library);
+
+    Chord c;
+    Instrument i;
+
+    current_chord = c;
+    current_inst = i;
 }
 
 MainWindow::~MainWindow()
@@ -190,6 +196,8 @@ void MainWindow::loadChords(const string& file, Chord &ch)
     if (inst_name.length() > 1)
         inst_name = inst_name.substr(1, inst_name.size()-2);
 
+    //string inst_loc = findInst();
+
     loadInstruments(QDir::homePath().toStdString()+"/Library/SmartGuitarChords/Instruments/"+inst_name+".txt", current_inst);
 
     //ui->filepath->setText(QString::fromStdString("/Library/SmartGuitarChords/Instruments/"+inst_name+".txt"));
@@ -258,7 +266,7 @@ void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
 
     while (i.parent().data().toString() != "Instruments")
     {
-        path = path + i.parent().data().toString() + "/";
+        path = i.parent().data().toString() + "/" + path;
         i = i.parent();
     }
 
@@ -279,7 +287,20 @@ void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
     {
         ui->del_inst_button->setEnabled(true);
 
+        string old_linked_inst_name;
+
+        if (current_chord.isInstrumentSet())
+            old_linked_inst_name = current_chord.getInstrument().getName();
+
         loadInstruments(inst_dir.absolutePath().toStdString(), current_inst);
+
+        if (old_linked_inst_name != current_inst.getName())
+        {
+            Chord c;
+            current_chord = c;
+            printChordInfo();
+        }
+
         printInstInfo();
 
         ui->statusbar->setText(index.data().toString() + " is a valid instrument.");
@@ -288,7 +309,7 @@ void MainWindow::on_InstrumentTree_clicked(QModelIndex index)
     else
     {
         ui->del_inst_button->setEnabled(false);
-        ui->statusbar->setText("No valid file/folder selected.");
+        ui->statusbar->setText("No valid file/folder selected. ("+path+")");
     }
 
 }
@@ -300,7 +321,7 @@ void MainWindow::on_ChordTree_clicked(QModelIndex index)
 
     while (i.parent().data().toString() != "Chords")
     {
-        path = path + i.parent().data().toString() + "/";
+        path = i.parent().data().toString() + "/" + path;
         i = i.parent();
     }
 
@@ -377,45 +398,47 @@ void MainWindow::on_ChordTree_clicked(QModelIndex index)
 
 void MainWindow::printInstInfo()
 {
-    QString inst_data;
-
-    inst_data = QString::fromStdString(current_inst.getName());
-    inst_data.append(" | ");
-    inst_data.append(QString::number(current_inst.getNumStrings()));
-    inst_data.append(" strings | ");
-
     vector <int> tuning = current_inst.getTuning();
 
-    for (unsigned int i=0; i<tuning.size(); i++)
-        inst_data.append(QString::fromStdString(tuningIntToStr(tuning[i], 'b') + " "));
+    QString tuningStr;
 
-    ui->filepath->setText(inst_data);
+    for (unsigned int i=0; i<tuning.size(); i++)
+    {
+        tuningStr.append(QString::fromStdString(tuningIntToStr(tuning[i], 'b')));
+        tuningStr.append(" ");
+    }
+
+    ui->inst_name_field->setText(QString::fromStdString(current_inst.getName()));
+    ui->inst_tuning_field->setText(tuningStr);
+    ui->inst_numstrings_field->setText(QString::number(current_inst.getNumStrings()));
 }
 
 void MainWindow::printChordInfo()
 {
-    ui->filepath2->setText(chord_dir.absolutePath());
-    if (current_chord.isValid())
+    if (current_chord.isValid() == 0)
     {
-        QString chord_data;
+        ui->chord_name_field->setText("");
+        ui->chord_tab_field->setText("");
+        ui->chord_capo_field->setText("");
+        ui->chord_relcapo_checkbox->setChecked(false);
 
-        chord_data = QString::fromStdString(current_chord.getName());
-        chord_data.append(" | ");
-
-        if (current_chord.getCapo() > 0)
-        {
-            chord_data.append("Capo ");
-            chord_data.append(QString::number(current_chord.getCapo()));
-            chord_data.append(" | ");
-        }
-
-        vector <string> tab = current_chord.getTab();
-
-        for (unsigned int i=0; i<tab.size(); i++)
-            chord_data.append(QString::fromStdString(tab[i] + " "));
-
-        ui->filepath2->setText(chord_data);
+        return;
     }
+
+    vector <string> tab = current_chord.getTab();
+
+    QString tabStr;
+
+    for (unsigned int i=0; i<tab.size(); i++)
+    {
+        tabStr.append(QString::fromStdString(tab[i]));
+        tabStr.append(" ");
+    }
+
+    ui->chord_name_field->setText(QString::fromStdString(current_chord.getName()));
+    ui->chord_tab_field->setText(tabStr);
+    ui->chord_capo_field->setText(QString::number(current_chord.getCapo()));
+    ui->chord_relcapo_checkbox->setChecked(current_chord.isRelativeCapo());
 }
 
 
@@ -434,7 +457,10 @@ void MainWindow::on_inst_folder_button_clicked()
         success = parent.mkdir( ui->inst_folder_name->text() );
 
         if (success)
+        {
             ui->statusbar->setText("Saved folder " + ui->inst_folder_name->text() + " in Instruments.");
+            ui->inst_folder_name->setText("");
+        }
 
         else
             ui->statusbar->setText("Failed to save folder.");
@@ -456,7 +482,10 @@ void MainWindow::on_chord_folder_button_clicked()
         success = parent.mkdir( ui->chord_folder_name->text() );
 
         if (success)
+        {
             ui->statusbar->setText("Saved folder " + ui->chord_folder_name->text() + " in Chords.");
+            ui->chord_folder_name->setText("");
+        }
 
         else
             ui->statusbar->setText("Failed to save folder.");
@@ -526,4 +555,267 @@ void MainWindow::on_del_chord_button_clicked()
         ui->statusbar->setText("Successfully deleted file.");
     else
         ui->statusbar->setText("File deletion failed!");
+}
+
+void MainWindow::on_inst_save_button_clicked()
+{
+    string name = ui->inst_name_field->text().toStdString();
+    int numstrings = ui->inst_numstrings_field->text().toInt();
+    string tuning = ui->inst_tuning_field->text().toStdString();
+    vector <string> tuningVec;
+
+    if (name.length() <= 0)
+    {
+        ui->statusbar->setText("FAILED: The Name field is empty.");
+        return;
+    }
+
+    unsigned int i = 0;
+
+    while (i < tuning.length())
+    {
+        if (tuning[i] == ' ' && i == tuning.length()-1)
+            break;
+
+        if (tuning[i] == ' ')
+            tuningVec.push_back("");
+
+        else if (i == 0)
+        {
+            tuningVec.push_back("");
+            tuningVec[0] += tuning[i];
+        }
+
+        else
+            tuningVec[tuningVec.size()-1] += tuning[i];
+
+        i++;
+    }
+
+    tuning = "";
+
+    for (i=0; i<tuningVec.size(); i++)
+    {
+        tuning += QString::number(tuningStrToInt(tuningVec[i])).toStdString();
+        tuning += " ";
+    }
+
+    string current_dir = inst_dir.dirName().toStdString();
+    bool is_dir = inst_dir.exists();
+
+    inst_dir.cdUp();
+
+    string path = inst_dir.absolutePath().toStdString();
+
+    if (is_dir)
+    {
+        path += "/";
+        path += current_dir;
+    }
+
+    path += "/";
+    path += name;
+    path += ".txt";
+
+    ofstream outfile;
+    outfile.open(path.c_str());
+
+    outfile<<"0 \""<<name<<"\" "<<numstrings<<" { "<<tuning<<"}\n";
+
+    outfile.close();
+
+    inst_dir.cd(QString::fromStdString(current_dir));
+
+    ui->statusbar->setText("Successfully saved instrument \""+QString::fromStdString(name)+"\".");
+}
+
+void MainWindow::on_chord_save_button_clicked()
+{
+    if (current_inst.getName() == "" && current_inst.getNumStrings() == 0)
+    {
+        ui->statusbar->setText("FAILED: Please select an instrument to create your chord on.");
+        return;
+    }
+
+    string name = ui->chord_name_field->text().toStdString();
+    string tab_temp = ui->chord_tab_field->text().toStdString();
+    int capo = ui->chord_capo_field->text().toInt();
+    bool relcapo = ui->chord_relcapo_checkbox->isChecked();
+
+    if (name.length() <= 0)
+    {
+        ui->statusbar->setText("FAILED: The Name field is empty.");
+        return;
+    }
+
+    string inst_name = current_inst.getName();
+
+    string tab;
+
+    for (unsigned int i=0; i<tab_temp.size(); i++)
+    {
+        if (tab_temp[i] != ' ')
+            tab += tab_temp[i];
+
+        else
+            tab += " ";
+    }
+
+    string current_dir = chord_dir.dirName().toStdString();
+    bool is_dir = chord_dir.exists();
+
+    chord_dir.cdUp();
+
+    string path = chord_dir.absolutePath().toStdString();
+
+    if (is_dir)
+    {
+        path += "/";
+        path += current_dir;
+    }
+
+    path += "/";
+    path += name;
+    path += ".txt";
+
+    ofstream outfile;
+    outfile.open(path.c_str());
+
+    outfile<<"0 \""<<name<<"\" \""<<inst_name<<"\" "<<capo<<" "<<relcapo<<" { "<<tab<<" }\n";
+
+    outfile.close();
+
+    chord_dir.cd(QString::fromStdString(current_dir));
+
+    ui->statusbar->setText("Successfully saved chord \""+QString::fromStdString(name)+"\".");
+}
+
+void MainWindow::on_inst_create_button_clicked()
+{
+    enableInstForm();
+    wipeInstForm();
+
+    ui->inst_cancel_button->setText("Cancel");
+}
+
+void MainWindow::on_chord_create_button_clicked()
+{
+    enableChordForm();
+    wipeChordForm();
+
+    ui->chord_cancel_button->setText("Cancel");
+}
+
+void MainWindow::enableInstForm()
+{
+    ui->inst_name_field->setEnabled(true);
+    ui->inst_tuning_field->setEnabled(true);
+    ui->inst_numstrings_field->setEnabled(true);
+
+    ui->inst_save_button->setEnabled(true);
+}
+
+void MainWindow::disableInstForm()
+{
+    ui->inst_name_field->setEnabled(false);
+    ui->inst_tuning_field->setEnabled(false);
+    ui->inst_numstrings_field->setEnabled(false);
+
+    ui->inst_save_button->setEnabled(false);
+}
+
+void MainWindow::enableChordForm()
+{
+    ui->chord_name_field->setEnabled(true);
+    ui->chord_tab_field->setEnabled(true);
+    ui->chord_capo_field->setEnabled(true);
+    ui->chord_relcapo_checkbox->setEnabled(true);
+
+    ui->chord_save_button->setEnabled(true);
+}
+
+void MainWindow::disableChordForm()
+{
+    ui->chord_name_field->setEnabled(false);
+    ui->chord_tab_field->setEnabled(false);
+    ui->chord_capo_field->setEnabled(false);
+    ui->chord_relcapo_checkbox->setEnabled(false);
+
+    ui->chord_save_button->setEnabled(false);
+}
+
+void MainWindow::wipeInstForm()
+{
+    ui->inst_name_field->setText("");
+    ui->inst_tuning_field->setText("");
+    ui->inst_numstrings_field->setText("");
+}
+
+void MainWindow::wipeChordForm()
+{
+    ui->chord_name_field->setText("");
+    ui->chord_tab_field->setText("");
+    ui->chord_capo_field->setText("");
+    ui->chord_relcapo_checkbox->setText("");
+}
+
+string MainWindow::findInst(string search, QDir d)
+{
+    QStringList files = d.entryList(QStringList(QString::fromStdString(search)),
+                                    QDir::Files | QDir::NoSymLinks);
+
+    for (int i=0; i<files.size(); i++)
+    {
+        if (files[i] == QString::fromStdString(search))
+        {
+            return (search + ".txt");
+        }
+    }
+
+    for (int i=0; i<files.size(); i++)
+    {
+        d.cd(files[i]);
+
+        if (d.exists())
+        {
+            string result = findInst(search, d);
+
+            if (result != "")
+                return d.absolutePath().toStdString()+"/"+result;
+        }
+
+        d.cdUp();
+    }
+
+    return "";
+}
+
+void MainWindow::on_inst_cancel_button_clicked()
+{
+    if (ui->inst_cancel_button->text() == "Edit Instrument")
+    {
+        ui->inst_cancel_button->setText("Cancel");
+        enableInstForm();
+    }
+
+    else if (ui->inst_cancel_button->text() == "Cancel")
+    {
+        ui->inst_cancel_button->setText("Edit Instrument");
+        disableInstForm();
+    }
+}
+
+void MainWindow::on_chord_cancel_button_clicked()
+{
+    if (ui->chord_cancel_button->text() == "Edit Chord")
+    {
+        ui->chord_cancel_button->setText("Cancel");
+        enableChordForm();
+    }
+
+    else if (ui->chord_cancel_button->text() == "Cancel")
+    {
+        ui->chord_cancel_button->setText("Edit Chord");
+        disableChordForm();
+    }
 }

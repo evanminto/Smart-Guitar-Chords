@@ -57,14 +57,17 @@ void Chord::calculateInfo()
 
 Chord::Chord()
 {
-    name = "New Chord";
+    name = "";
     capo = 0;
+    relative = false;
+    valid = false;
+    inst = NULL;
 }
 
 Chord::Chord(Chord const &c)
 {
     name = c.getName();
-    inst = &c.getInstrument();
+    inst = c.getInstrumentPtr();
     capo = c.getCapo();
     tab = c.getTab();
     notes = c.getNotes();
@@ -77,7 +80,7 @@ Chord::Chord(Chord const &c)
 
     id = c.getID();
 
-    valid = true;
+    valid = c.isValid();
 }
 
 Chord::Chord(Instrument *i, std::string s, std::vector <std::string> t)
@@ -202,7 +205,7 @@ std::ostream& operator<<(std::ostream& output, const Chord& c)
 Chord& Chord::operator=(Chord const &c)
 {
     name = c.getName();
-    inst = &c.getInstrument();
+    inst = c.getInstrumentPtr();
     capo = c.getCapo();
     tab = c.getTab();
     notes = c.getNotes();
@@ -215,7 +218,7 @@ Chord& Chord::operator=(Chord const &c)
 
     id = c.getID();
 
-    valid = true;
+    valid = c.isValid();
 
     return *this;
 }
