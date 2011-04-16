@@ -292,7 +292,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>326 305 788 504 0 0 1440 878 </string>
+						<string>478 282 788 504 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -320,14 +320,14 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2040F50D133CF37E00A3775F</string>
+										<string>203A5863135941AF00FA0F25</string>
 										<key>history</key>
 										<array>
 											<string>2078B0C8132FBE8A00B48F04</string>
 											<string>2078B0C9132FBE8A00B48F04</string>
 											<string>2078B0CA132FBE8A00B48F04</string>
 											<string>203690F31331355A00AA0A76</string>
-											<string>206B46D7133CCA8400708B5E</string>
+											<string>20705302135016E20082DCEC</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -349,7 +349,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {580, 285}}</string>
 								<key>RubberWindowFrame</key>
-								<string>326 305 788 504 0 0 1440 878 </string>
+								<string>478 282 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -371,7 +371,7 @@
 								<key>Frame</key>
 								<string>{{0, 290}, {580, 173}}</string>
 								<key>RubberWindowFrame</key>
-								<string>326 305 788 504 0 0 1440 878 </string>
+								<string>478 282 788 504 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -395,9 +395,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2040F509133CCDCF00A3775F</string>
+				<string>203A585D135865DD00FA0F25</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2040F50A133CCDCF00A3775F</string>
+				<string>203A585E135865DD00FA0F25</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -535,7 +535,7 @@
 		<string>/Users/evan/Documents/RPI/CLUBS/RCOS/Smart-Guitar-Chords/CustomChords/CustomChords.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>326 305 788 504 0 0 1440 878 </string>
+	<string>478 282 788 504 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -612,7 +612,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>2078B0A2132B043F00B48F04</string>
-				<string>2040F50B133CCDCF00A3775F</string>
+				<string>203A585F135865DD00FA0F25</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

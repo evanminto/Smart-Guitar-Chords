@@ -46,6 +46,7 @@ private:
 private slots:
 
 private slots:
+    void on_chord_tab_field_textChanged(QString );
     void on_chord_cancel_button_clicked();
     void on_inst_cancel_button_clicked();
     void on_chord_create_button_clicked();

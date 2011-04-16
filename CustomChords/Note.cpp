@@ -86,6 +86,17 @@ void Note::set(int t, int c, int f)
     valid = true;
 }
 
+void Note::set(int newPitch)
+{
+    absPitch = newPitch;
+    relPitch = absPitch % 12;
+    octave = absPitch / 12;
+
+    generateName();
+
+    valid = true;
+}
+
 void Note::setName(std::string n)
 {
     name = n;
@@ -102,7 +113,7 @@ void Note::invalidate()
     valid = false;
 }
 
-bool Note::isValid()
+bool Note::isValid() const
 {
     return valid;
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Mar 25 09:19:08 2011
+** Created: Fri Apr 15 07:39:03 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,6 +15,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QCheckBox>
+#include <QtGui/QComboBox>
 #include <QtGui/QFrame>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -52,7 +53,7 @@ public:
     QPushButton *del_chord_button;
     QFrame *line;
     QFrame *line_2;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_3;
     QLabel *inst_edit_label;
     QHBoxLayout *horizontalLayout_2;
@@ -71,7 +72,7 @@ public:
     QPushButton *inst_cancel_button;
     QPushButton *inst_save_button;
     QPushButton *inst_create_button;
-    QWidget *widget1;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_4;
     QLabel *chord_edit_label;
     QHBoxLayout *horizontalLayout_5;
@@ -90,6 +91,7 @@ public:
     QPushButton *chord_cancel_button;
     QPushButton *chord_save_button;
     QPushButton *chord_create_button;
+    QComboBox *suggestions;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -98,12 +100,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(815, 654);
+        MainWindow->resize(815, 706);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 330, 731, 231));
+        layoutWidget->setGeometry(QRect(40, 380, 731, 231));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -119,7 +121,7 @@ public:
 
         InstrumentTree = new QTreeView(layoutWidget);
         InstrumentTree->setObjectName(QString::fromUtf8("InstrumentTree"));
-        InstrumentTree->header()->setVisible(true);
+        InstrumentTree->header()->setVisible(false);
         InstrumentTree->header()->setDefaultSectionSize(150);
         InstrumentTree->header()->setStretchLastSection(true);
 
@@ -147,25 +149,25 @@ public:
 
         statusbar = new QLabel(centralWidget);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        statusbar->setGeometry(QRect(40, 580, 731, 16));
+        statusbar->setGeometry(QRect(40, 630, 731, 16));
         chord_folder_button = new QPushButton(centralWidget);
         chord_folder_button->setObjectName(QString::fromUtf8("chord_folder_button"));
-        chord_folder_button->setGeometry(QRect(590, 260, 181, 31));
+        chord_folder_button->setGeometry(QRect(590, 310, 181, 31));
         inst_folder_button = new QPushButton(centralWidget);
         inst_folder_button->setObjectName(QString::fromUtf8("inst_folder_button"));
-        inst_folder_button->setGeometry(QRect(220, 260, 181, 31));
+        inst_folder_button->setGeometry(QRect(220, 310, 181, 31));
         inst_folder_name = new QLineEdit(centralWidget);
         inst_folder_name->setObjectName(QString::fromUtf8("inst_folder_name"));
-        inst_folder_name->setGeometry(QRect(50, 260, 161, 22));
+        inst_folder_name->setGeometry(QRect(50, 310, 161, 22));
         chord_folder_name = new QLineEdit(centralWidget);
         chord_folder_name->setObjectName(QString::fromUtf8("chord_folder_name"));
-        chord_folder_name->setGeometry(QRect(420, 260, 161, 22));
+        chord_folder_name->setGeometry(QRect(420, 310, 161, 22));
         del_inst_button = new QPushButton(centralWidget);
         del_inst_button->setObjectName(QString::fromUtf8("del_inst_button"));
-        del_inst_button->setGeometry(QRect(220, 290, 181, 31));
+        del_inst_button->setGeometry(QRect(220, 340, 181, 31));
         del_chord_button = new QPushButton(centralWidget);
         del_chord_button->setObjectName(QString::fromUtf8("del_chord_button"));
-        del_chord_button->setGeometry(QRect(590, 290, 181, 31));
+        del_chord_button->setGeometry(QRect(590, 340, 181, 31));
         line = new QFrame(centralWidget);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(-10, 220, 831, 20));
@@ -176,15 +178,15 @@ public:
         line_2->setGeometry(QRect(390, -10, 20, 241));
         line_2->setFrameShape(QFrame::VLine);
         line_2->setFrameShadow(QFrame::Sunken);
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(40, 20, 331, 201));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(40, 20, 331, 201));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget1);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        inst_edit_label = new QLabel(widget);
+        inst_edit_label = new QLabel(layoutWidget1);
         inst_edit_label->setObjectName(QString::fromUtf8("inst_edit_label"));
         inst_edit_label->setLayoutDirection(Qt::LeftToRight);
         inst_edit_label->setAlignment(Qt::AlignCenter);
@@ -194,18 +196,18 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        inst_name_label = new QLabel(widget);
+        inst_name_label = new QLabel(layoutWidget1);
         inst_name_label->setObjectName(QString::fromUtf8("inst_name_label"));
 
         horizontalLayout_2->addWidget(inst_name_label);
 
-        inst_name_field = new QLineEdit(widget);
+        inst_name_field = new QLineEdit(layoutWidget1);
         inst_name_field->setObjectName(QString::fromUtf8("inst_name_field"));
         inst_name_field->setEnabled(false);
 
         horizontalLayout_2->addWidget(inst_name_field);
 
-        label_9 = new QLabel(widget);
+        label_9 = new QLabel(layoutWidget1);
         label_9->setObjectName(QString::fromUtf8("label_9"));
 
         horizontalLayout_2->addWidget(label_9);
@@ -216,18 +218,18 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        inst_tuning_label = new QLabel(widget);
+        inst_tuning_label = new QLabel(layoutWidget1);
         inst_tuning_label->setObjectName(QString::fromUtf8("inst_tuning_label"));
 
         horizontalLayout_3->addWidget(inst_tuning_label);
 
-        inst_tuning_field = new QLineEdit(widget);
+        inst_tuning_field = new QLineEdit(layoutWidget1);
         inst_tuning_field->setObjectName(QString::fromUtf8("inst_tuning_field"));
         inst_tuning_field->setEnabled(false);
 
         horizontalLayout_3->addWidget(inst_tuning_field);
 
-        label_10 = new QLabel(widget);
+        label_10 = new QLabel(layoutWidget1);
         label_10->setObjectName(QString::fromUtf8("label_10"));
 
         horizontalLayout_3->addWidget(label_10);
@@ -238,18 +240,18 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        inst_numstrings_label = new QLabel(widget);
+        inst_numstrings_label = new QLabel(layoutWidget1);
         inst_numstrings_label->setObjectName(QString::fromUtf8("inst_numstrings_label"));
 
         horizontalLayout_4->addWidget(inst_numstrings_label);
 
-        inst_numstrings_field = new QLineEdit(widget);
+        inst_numstrings_field = new QLineEdit(layoutWidget1);
         inst_numstrings_field->setObjectName(QString::fromUtf8("inst_numstrings_field"));
         inst_numstrings_field->setEnabled(false);
 
         horizontalLayout_4->addWidget(inst_numstrings_field);
 
-        label_11 = new QLabel(widget);
+        label_11 = new QLabel(layoutWidget1);
         label_11->setObjectName(QString::fromUtf8("label_11"));
 
         horizontalLayout_4->addWidget(label_11);
@@ -260,13 +262,13 @@ public:
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        inst_cancel_button = new QPushButton(widget);
+        inst_cancel_button = new QPushButton(layoutWidget1);
         inst_cancel_button->setObjectName(QString::fromUtf8("inst_cancel_button"));
         inst_cancel_button->setEnabled(true);
 
         horizontalLayout_8->addWidget(inst_cancel_button);
 
-        inst_save_button = new QPushButton(widget);
+        inst_save_button = new QPushButton(layoutWidget1);
         inst_save_button->setObjectName(QString::fromUtf8("inst_save_button"));
         inst_save_button->setEnabled(false);
 
@@ -275,20 +277,20 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_8);
 
-        inst_create_button = new QPushButton(widget);
+        inst_create_button = new QPushButton(layoutWidget1);
         inst_create_button->setObjectName(QString::fromUtf8("inst_create_button"));
 
         verticalLayout_3->addWidget(inst_create_button);
 
-        widget1 = new QWidget(centralWidget);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(430, 20, 341, 206));
-        verticalLayout_4 = new QVBoxLayout(widget1);
+        layoutWidget2 = new QWidget(centralWidget);
+        layoutWidget2->setObjectName(QString::fromUtf8("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(430, 20, 341, 206));
+        verticalLayout_4 = new QVBoxLayout(layoutWidget2);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        chord_edit_label = new QLabel(widget1);
+        chord_edit_label = new QLabel(layoutWidget2);
         chord_edit_label->setObjectName(QString::fromUtf8("chord_edit_label"));
         chord_edit_label->setLayoutDirection(Qt::LeftToRight);
         chord_edit_label->setAlignment(Qt::AlignCenter);
@@ -298,18 +300,18 @@ public:
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        chord_name_label = new QLabel(widget1);
+        chord_name_label = new QLabel(layoutWidget2);
         chord_name_label->setObjectName(QString::fromUtf8("chord_name_label"));
 
         horizontalLayout_5->addWidget(chord_name_label);
 
-        chord_name_field = new QLineEdit(widget1);
+        chord_name_field = new QLineEdit(layoutWidget2);
         chord_name_field->setObjectName(QString::fromUtf8("chord_name_field"));
         chord_name_field->setEnabled(false);
 
         horizontalLayout_5->addWidget(chord_name_field);
 
-        label_12 = new QLabel(widget1);
+        label_12 = new QLabel(layoutWidget2);
         label_12->setObjectName(QString::fromUtf8("label_12"));
 
         horizontalLayout_5->addWidget(label_12);
@@ -320,18 +322,18 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        chord_tab_label = new QLabel(widget1);
+        chord_tab_label = new QLabel(layoutWidget2);
         chord_tab_label->setObjectName(QString::fromUtf8("chord_tab_label"));
 
         horizontalLayout_6->addWidget(chord_tab_label);
 
-        chord_tab_field = new QLineEdit(widget1);
+        chord_tab_field = new QLineEdit(layoutWidget2);
         chord_tab_field->setObjectName(QString::fromUtf8("chord_tab_field"));
         chord_tab_field->setEnabled(false);
 
         horizontalLayout_6->addWidget(chord_tab_field);
 
-        label_13 = new QLabel(widget1);
+        label_13 = new QLabel(layoutWidget2);
         label_13->setObjectName(QString::fromUtf8("label_13"));
 
         horizontalLayout_6->addWidget(label_13);
@@ -342,18 +344,18 @@ public:
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        chord_capo_label = new QLabel(widget1);
+        chord_capo_label = new QLabel(layoutWidget2);
         chord_capo_label->setObjectName(QString::fromUtf8("chord_capo_label"));
 
         horizontalLayout_7->addWidget(chord_capo_label);
 
-        chord_capo_field = new QLineEdit(widget1);
+        chord_capo_field = new QLineEdit(layoutWidget2);
         chord_capo_field->setObjectName(QString::fromUtf8("chord_capo_field"));
         chord_capo_field->setEnabled(false);
 
         horizontalLayout_7->addWidget(chord_capo_field);
 
-        chord_relcapo_checkbox = new QCheckBox(widget1);
+        chord_relcapo_checkbox = new QCheckBox(layoutWidget2);
         chord_relcapo_checkbox->setObjectName(QString::fromUtf8("chord_relcapo_checkbox"));
         chord_relcapo_checkbox->setEnabled(false);
         chord_relcapo_checkbox->setLayoutDirection(Qt::RightToLeft);
@@ -366,13 +368,13 @@ public:
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        chord_cancel_button = new QPushButton(widget1);
+        chord_cancel_button = new QPushButton(layoutWidget2);
         chord_cancel_button->setObjectName(QString::fromUtf8("chord_cancel_button"));
         chord_cancel_button->setEnabled(true);
 
         horizontalLayout_9->addWidget(chord_cancel_button);
 
-        chord_save_button = new QPushButton(widget1);
+        chord_save_button = new QPushButton(layoutWidget2);
         chord_save_button->setObjectName(QString::fromUtf8("chord_save_button"));
         chord_save_button->setEnabled(false);
 
@@ -381,11 +383,14 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_9);
 
-        chord_create_button = new QPushButton(widget1);
+        chord_create_button = new QPushButton(layoutWidget2);
         chord_create_button->setObjectName(QString::fromUtf8("chord_create_button"));
 
         verticalLayout_4->addWidget(chord_create_button);
 
+        suggestions = new QComboBox(centralWidget);
+        suggestions->setObjectName(QString::fromUtf8("suggestions"));
+        suggestions->setGeometry(QRect(430, 240, 211, 26));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));

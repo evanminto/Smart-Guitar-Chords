@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri Mar 25 09:19:07 2011
+** Created: Fri Apr 15 23:13:27 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,23 +32,25 @@ static const uint qt_meta_data_MainWindow[] = {
 
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
-      45,   11,   11,   11, 0x08,
-      77,   11,   11,   11, 0x08,
-     110,   11,   11,   11, 0x08,
-     142,   11,   11,   11, 0x08,
-     173,   11,   11,   11, 0x08,
-     203,   11,   11,   11, 0x08,
-     233,   11,   11,   11, 0x08,
-     262,   11,   11,   11, 0x08,
-     295,   11,   11,   11, 0x08,
-     333,  327,   11,   11, 0x08,
-     367,  327,   11,   11, 0x08,
+      52,   11,   11,   11, 0x08,
+      85,   11,   11,   11, 0x08,
+     117,   11,   11,   11, 0x08,
+     150,   11,   11,   11, 0x08,
+     182,   11,   11,   11, 0x08,
+     213,   11,   11,   11, 0x08,
+     243,   11,   11,   11, 0x08,
+     273,   11,   11,   11, 0x08,
+     302,   11,   11,   11, 0x08,
+     335,   11,   11,   11, 0x08,
+     373,  367,   11,   11, 0x08,
+     407,  367,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0on_chord_cancel_button_clicked()\0"
+    "MainWindow\0\0on_chord_tab_field_textChanged(QString)\0"
+    "on_chord_cancel_button_clicked()\0"
     "on_inst_cancel_button_clicked()\0"
     "on_chord_create_button_clicked()\0"
     "on_inst_create_button_clicked()\0"
@@ -91,21 +93,22 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_chord_cancel_button_clicked(); break;
-        case 1: on_inst_cancel_button_clicked(); break;
-        case 2: on_chord_create_button_clicked(); break;
-        case 3: on_inst_create_button_clicked(); break;
-        case 4: on_chord_save_button_clicked(); break;
-        case 5: on_inst_save_button_clicked(); break;
-        case 6: on_del_chord_button_clicked(); break;
-        case 7: on_del_inst_button_clicked(); break;
-        case 8: on_chord_folder_button_clicked(); break;
-        case 9: on_inst_folder_button_clicked(); break;
-        case 10: on_ChordTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
-        case 11: on_InstrumentTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
+        case 0: on_chord_tab_field_textChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: on_chord_cancel_button_clicked(); break;
+        case 2: on_inst_cancel_button_clicked(); break;
+        case 3: on_chord_create_button_clicked(); break;
+        case 4: on_inst_create_button_clicked(); break;
+        case 5: on_chord_save_button_clicked(); break;
+        case 6: on_inst_save_button_clicked(); break;
+        case 7: on_del_chord_button_clicked(); break;
+        case 8: on_del_inst_button_clicked(); break;
+        case 9: on_chord_folder_button_clicked(); break;
+        case 10: on_inst_folder_button_clicked(); break;
+        case 11: on_ChordTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
+        case 12: on_InstrumentTree_clicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

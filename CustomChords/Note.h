@@ -22,18 +22,20 @@ public:
     Note(int t, int c, int f);
     Note(int newPitch);
 
-    int getAbsPitch() { return absPitch; }
-    int getRelPitch() { return relPitch; }
-    int getOctave() { return octave; }
+    int getAbsPitch() const { return absPitch; }
+    int getRelPitch() const { return relPitch; }
+    int getRelPitch(int offset) const { return (relPitch + offset)%12; }
+    int getOctave() const { return octave; }
     std::string getName() const { return name; }
 
     int encodeAbsPitch(int t, int c, int f);
     void set(int t, int c, int f);
+    void set(int newPitch);
     void setName(std::string n);
     void setName(std::string n1, std::string n2);
     void invalidate();
 
-    bool isValid();
+    bool isValid() const;
 };
 
 #endif // NOTE_H

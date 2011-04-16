@@ -819,3 +819,13 @@ void MainWindow::on_chord_cancel_button_clicked()
         disableChordForm();
     }
 }
+
+void MainWindow::on_chord_tab_field_textChanged(QString )
+{
+    std::vector <QString> results = autoComplete( current_inst, ui->chord_capo_field->text().toInt(), ui->chord_tab_field->text() );
+
+    ui->suggestions->clear();
+
+    for ( int i=0; i<results.size(); i++ )
+        ui->suggestions->addItem(results[i]);
+}

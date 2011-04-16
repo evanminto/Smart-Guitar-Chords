@@ -7,6 +7,8 @@ Designed by Evan Minto, as a part of the Rensselaer Center for Open-Source Softw
 
 To compile and run Custom Guitar Chords, the project should be opened in Nokia's Qt Creator program, and built from there.
 
+NOTE: With the addition of a still-unfinished auto-completion tool, many of the existing features may cause the program to crash. Please refer to a previous commit if you would like to try out these features. The auto-completion tool currently takes the user-defined chord tab and represents it as a generic pattern, then attempts to display the same pattern shifted slightly. I am still dealing with some problems related to absolute/relative pitches, but the basic idea is there and just needs to be debugged.
+
 Smart Guitar Chords can now create, edit, and save instruments and chords! However, the functionality is still rather rough, and might not be too simple for end-users yet. The instructions are below:
 
 - Selecting an existing instrument/chord will make its information appear in the text boxes at the top of the window.
@@ -26,4 +28,4 @@ Notes on input format:
 
 You can also manipulate folders by choosing your folder name, then clicking "Create Folder." "Delete Selected" will attempt to delete whatever file or folder you are pointing to, and it will not be able to delete folders with files in them. Please note that folder deletion still has a few bugs that may cause a folder to fail to delete.
 
-Currently, the program is only designed for Mac OS X, though small changes in how it deals with library files should make for a quick switch to other platforms in the future.
+Currently, the program is only designed for Mac OS X, though small changes in startup routines and how it deals with library files should make for a quick switch to other platforms in the future.

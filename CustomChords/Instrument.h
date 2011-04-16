@@ -12,7 +12,7 @@ class Instrument
 private:
     std::string name;
     int numStrings;
-    std::vector <int> tuning;
+    std::vector <int> tuning;   // RELATIVE PITCH, NOT ABSOLUTE!
 
     int id;
 

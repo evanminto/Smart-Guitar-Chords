@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <QString>
+#include <iostream>
 
 class Chord
 {
@@ -36,9 +38,9 @@ private:
 public:
     Chord();
     Chord(Chord const &c);
-    Chord(Instrument *i, std::string s, std::vector <std::string> t);
-    Chord(Instrument *i, std::string s, std::vector <std::string> t, int c);
-    Chord(Instrument *i, std::string s, std::vector <std::string> t, int c, bool rel);
+    Chord(Instrument *i, std::string const& s, std::vector <std::string> const& t);
+    Chord(Instrument *i, std::string const& s, std::vector <std::string> const& t, int const& c);
+    Chord(Instrument *i, std::string const& s, std::vector <std::string> const& t, int const& c, bool const& rel);
 
     std::string getName() const { return name; }
     Instrument getInstrument() const { return *inst; }
@@ -66,5 +68,14 @@ public:
 
     Chord& operator=(Chord const &c);
 };
+
+std::vector <QString> autoComplete(Instrument const& inst, int const& capo, QString const& qinput);
+Note extractBassNote(std::vector <Note> const& notes);
+std::vector <int> extractPattern(std::vector <Note> const& notes);
+std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int capo);
+std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, std::vector <int> const& pattern);
+std::vector <int> constructTab(Instrument const& inst, std::vector <Note> const& notes);
+std::string constructTabStr(Instrument const& inst, std::vector <Note> const& notes);
+int constructFret(int const& tuning, Note const& note);
 
 #endif // CHORD_H
