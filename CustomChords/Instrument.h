@@ -31,7 +31,7 @@ public:
     Instrument& operator=(Instrument const &i);
 };
 
-int tuningStrToInt(std::string t);
+int tuningStrToInt(std::string t, int octave);
 std::string tuningIntToStr(int t, char sharp_flat);
 
 #endif // INSTRUMENT_H

@@ -224,23 +224,142 @@ Chord& Chord::operator=(Chord const &c)
 }
 
 
+
+void removeDuplicates(std::vector<QString>& vec)
+{
+
+   std::sort(vec.begin(), vec.end());
+   vec.erase(std::unique(vec.begin(), vec.end()), vec.end());
+}
+
 std::vector <QString> autoComplete(Instrument const& inst, int const& capo, QString const& qinput)
 {
+    if ( qinput.size() == 0 )
+    {
+        std::vector <QString> result;
+        return result;
+    }
+
     std::vector <Note> notes = extractNotes( inst, qinput.toStdString(), capo );
 
-    Note bass_note = extractBassNote(notes);
+    Note bass_note_orig = extractBassNote(notes);
     std::vector <int> pattern = extractPattern(notes);
 
     std::vector <QString> result;
 
-    for (int i=0; i<3; i++)
-    {
-        QString temp;
-        bass_note.set( bass_note.getAbsPitch() );
-        std::vector <Note> notes = constructNotes(inst, bass_note, pattern);
+    QString temp;
+    Note bass_note;
 
+    int center_fret = extractCenter(notes, inst);
+
+    std::vector < std::vector <int> > suggestions = autofillPattern(pattern);
+
+    for ( int i=0; i<suggestions.size(); i++ )
+    {
+        notes = constructNotes(inst, bass_note_orig, suggestions[i], center_fret);
         temp = QString::fromStdString( constructTabStr(inst, notes) );
         result.push_back(temp);
+    }
+
+    removeDuplicates(result);
+
+    return result;
+}
+
+int extractCenter(std::vector <Note> notes, Instrument const& inst)
+{
+    int center_fret = 0;
+    int num_fretted = 0;
+
+    for ( int i=0; i<notes.size(); i++ )
+    {
+        if ( notes[i].getAbsPitch() < 500 &&
+             notes[i].getAbsPitch() - inst.getTuning()[i] > 0 )
+        {
+            center_fret += (notes[i].getAbsPitch() - inst.getTuning()[i]);
+            num_fretted++;
+        }
+    }
+
+    std::cout<<"findCenter: "<<(center_fret/num_fretted)<<std::endl;
+
+    return (center_fret / num_fretted);
+}
+
+std::vector <int> extractPatternList(std::vector <int> pattern)
+{
+    std::vector <int> result;
+
+    std::cout<<"extractPatternList: ";
+
+    for ( int i=0; i<pattern.size(); i++ )
+    {
+        bool found = false;
+        for ( int j=0; j<result.size(); j++ )
+        {
+            if (pattern[i] == result[j])
+                found = true;
+        }
+
+        if (!found && pattern[i] < 500)
+        {
+            std::cout<<pattern[i]<<" ";
+            result.push_back(pattern[i]);
+        }
+    }
+
+    std::cout<<std::endl;
+
+    return result;
+}
+
+std::vector < std::vector <int> > autofillPattern(std::vector <int> pattern)
+{
+    std::vector <int> plist = extractPatternList(pattern);
+
+    return autofillPatternRecursive(pattern, plist);
+}
+
+std::vector < std::vector <int> > autofillPatternRecursive(std::vector <int> pattern, std::vector <int> plist)
+{
+    for ( int k=0; k<pattern.size(); k++ )
+        std::cout<<pattern[k]<<" ";
+    std::cout<<"-- "<<plist.size()<<std::endl;
+
+    std::vector < std::vector <int> > result;
+
+    std::vector <int> temp;
+    std::vector < std::vector <int> > temp_list;
+
+    int num_xs = 0;
+
+    for ( unsigned int i=0; i<pattern.size(); i++ )
+    {
+        if (pattern[i] > 500)
+            num_xs++;
+    }
+
+    std::cout<<"num_xs: "<<num_xs<<std::endl;
+
+    for ( int i=0; i<pattern.size(); i++ )
+    {
+        if ( pattern[i] > 500)
+        {
+            for ( int j=0; j<plist.size(); j++ )
+            {
+                temp = pattern;
+                temp[i] = plist[j];
+
+                result.push_back(temp);
+
+                if (num_xs-1 > 0)
+                {
+                    //std::cout<<i<<" "<<j<<std::endl;
+                    temp_list = autofillPatternRecursive(temp, plist);
+                    result.insert( result.end(), temp_list.begin(), temp_list.end() );
+                }
+            }
+        }
     }
 
     return result;
@@ -272,6 +391,8 @@ std::vector <int> extractPattern(std::vector <Note> const& notes)
 
     Note bassNote = extractBassNote(notes);
 
+    std::cout<<"extractPattern: ";
+
     for (int i=0; i<notes.size(); i++)
     {
         int newNote;
@@ -279,14 +400,16 @@ std::vector <int> extractPattern(std::vector <Note> const& notes)
         if (!notes[i].isValid())
             newNote = 1000;
 
-        else if (notes[i].getRelPitch() < bassNote.getRelPitch())
-            newNote = bassNote.getRelPitch() - notes[i].getRelPitch();
-
         else
-            newNote = (12 - (notes[i].getRelPitch() - bassNote.getRelPitch())) %  12;
+            newNote = abs( notes[i].getAbsPitch() - bassNote.getAbsPitch() ) %  12;
+
 
         pattern.push_back(newNote);
+
+        std::cout<<newNote<<" ";
     }
+
+    std::cout<<std::endl;
 
     return pattern;
 }
@@ -311,8 +434,9 @@ std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int
     std::cout<<"(tuning), ";
 
     temp = strtok( tokenized_str, " " );
-
     std::cout<<temp<<" ";
+    tab.push_back( std::string(temp) );
+
     while ( ( temp = strtok( NULL, " " ) ) != NULL )
     {
         std::string str(temp);
@@ -321,6 +445,9 @@ std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int
 
         tab.push_back(str);
     }
+
+    while ( tab.size() < inst.getNumStrings() )
+        tab.push_back( "x" );
 
     std::cout<<"(tab), ";
 
@@ -331,7 +458,13 @@ std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int
         if (tab[i] == "x")
             tn.invalidate();
         else
+        {
             tn.set( inst.getTuning()[i], capo, atoi( tab[i].c_str() ) );
+            /*
+            std::cout<<"("<<inst.getTuning()[i]<<" + "<<capo<<" + "<<atoi( tab[i].c_str() )<<" = "
+                     <<( inst.getTuning()[i] + capo + atoi( tab[i].c_str() ) )<<") ";
+             */
+        }
 
         std::cout<<tn.getAbsPitch()<<" ";
 
@@ -343,11 +476,11 @@ std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int
     return notes;
 }
 
-std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, std::vector <int> const& pattern)
+std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, std::vector <int> const& pattern, int center_fret)
 {
     // Find the string the bass note is played on
     int bass_note_str = 0;
-    while (pattern[bass_note_str] >= 1000) bass_note_str++;
+    while (pattern[bass_note_str] >= 500) bass_note_str++;
 
     int bass_note_fret = bassNote.getAbsPitch() - inst.getTuning()[bass_note_str];
 
@@ -355,12 +488,12 @@ std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, 
 
     for ( int i=0; i<pattern.size() && i<inst.getNumStrings(); i++ )
     {
-        if (i < bass_note_str) result.push_back(Note(1000));
+        if (i < bass_note_str || pattern[i] >= 500) result.push_back(Note(1000));
         else if (i == bass_note_str) result.push_back(bassNote);
 
         else
         {
-            for ( int j=bass_note_fret-5; j<bass_note_fret+1; j++ )
+            for ( int j=center_fret-4; j<center_fret+4; j++ )
             {
                 Note tn( inst.getTuning()[i] + j );
 
@@ -371,8 +504,14 @@ std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, 
                 }
             }
         }
-
     }
+
+    /*
+    for ( int i=0; i<result.size(); i++ )
+        std::cout<<result[i].getAbsPitch()<<" ";
+
+    std::cout<<" (abs)"<<std::endl;
+    */
 
     return result;
 }
@@ -382,7 +521,12 @@ std::vector <int> constructTab(Instrument const& inst, std::vector <Note> const&
     std::vector <int> result;
 
     for (int i=0; i<inst.getNumStrings(); i++)
-        result.push_back( constructFret( inst.getTuning()[i], notes[i] ) );
+    {
+        int fret = constructFret( inst.getTuning()[i], notes[i] );
+
+        if (fret >= 0)
+            result.push_back( fret );
+    }
 
     return result;
 }
@@ -393,7 +537,7 @@ std::string constructTabStr(Instrument const& inst, std::vector <Note> const& no
     std::string result = "";
 
     for ( int i=0; i<tab_int.size(); i++ )
-        result += ( QString::number(tab_int[i]).toStdString() + " " );
+        result += ( tab_int[i] < 500 ? QString::number(tab_int[i]).toStdString() + " " : "x " );
 
     return result;
 }

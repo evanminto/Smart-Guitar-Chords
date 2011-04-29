@@ -61,8 +61,11 @@ Note::Note(int t, int c, int f)
 Note::Note(int newPitch)
 {
     absPitch = newPitch;
-    relPitch = absPitch % 12;
     octave = absPitch / 12;
+
+    relPitch = absPitch % 12;
+    while (relPitch<0)
+        relPitch += 12;
 
     generateName();
 
@@ -78,8 +81,11 @@ int Note::encodeAbsPitch(int t, int c, int f)
 void Note::set(int t, int c, int f)
 {
     absPitch = encodeAbsPitch(t, c, f);
-    relPitch = absPitch % 12;
     octave = absPitch / 12;
+
+    relPitch = absPitch % 12;
+    while (relPitch<0)
+        relPitch += 12;
 
     generateName();
 
@@ -89,8 +95,11 @@ void Note::set(int t, int c, int f)
 void Note::set(int newPitch)
 {
     absPitch = newPitch;
-    relPitch = absPitch % 12;
     octave = absPitch / 12;
+
+    relPitch = absPitch % 12;
+    while (relPitch<0)
+        relPitch += 12;
 
     generateName();
 

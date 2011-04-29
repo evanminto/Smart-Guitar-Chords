@@ -40,9 +40,8 @@ std::ostream& operator<<(std::ostream& output, const Instrument& inst)
     return output;
 }
 
-int tuningStrToInt(std::string t)
+int tuningStrToInt(std::string t, int octave)
 {
-
     int num;
 
     if (static_cast<int>(t[0]) >= 65 && static_cast<int>(t[0]) <= 71)
@@ -79,11 +78,16 @@ int tuningStrToInt(std::string t)
             num++;
     }
 
-    return num;
+    return num + 12*octave;
 }
 
 std::string tuningIntToStr(int t, char sharp_flat)
 {
+    while (t<0)
+        t += 12;
+
+    t %= 12;
+
     switch (t) {
     case 9:
         return "A";

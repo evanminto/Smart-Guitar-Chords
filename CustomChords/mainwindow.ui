@@ -447,15 +447,27 @@
      </item>
     </layout>
    </widget>
-   <widget class="QComboBox" name="suggestions">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>430</x>
       <y>240</y>
-      <width>211</width>
+      <width>341</width>
       <height>26</height>
      </rect>
     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QLabel" name="suggestions_label">
+       <property name="text">
+        <string>Suggestions</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="suggestions"/>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Apr 15 07:39:03 2011
+** Created: Thu Apr 28 17:06:47 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -91,6 +91,9 @@ public:
     QPushButton *chord_cancel_button;
     QPushButton *chord_save_button;
     QPushButton *chord_create_button;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *suggestions_label;
     QComboBox *suggestions;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -388,9 +391,24 @@ public:
 
         verticalLayout_4->addWidget(chord_create_button);
 
-        suggestions = new QComboBox(centralWidget);
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(430, 240, 341, 26));
+        horizontalLayout_10 = new QHBoxLayout(widget);
+        horizontalLayout_10->setSpacing(6);
+        horizontalLayout_10->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
+        horizontalLayout_10->setContentsMargins(0, 0, 0, 0);
+        suggestions_label = new QLabel(widget);
+        suggestions_label->setObjectName(QString::fromUtf8("suggestions_label"));
+
+        horizontalLayout_10->addWidget(suggestions_label);
+
+        suggestions = new QComboBox(widget);
         suggestions->setObjectName(QString::fromUtf8("suggestions"));
-        suggestions->setGeometry(QRect(430, 240, 211, 26));
+
+        horizontalLayout_10->addWidget(suggestions);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -438,6 +456,7 @@ public:
         chord_cancel_button->setText(QApplication::translate("MainWindow", "Edit Chord", 0, QApplication::UnicodeUTF8));
         chord_save_button->setText(QApplication::translate("MainWindow", "Save Instrument", 0, QApplication::UnicodeUTF8));
         chord_create_button->setText(QApplication::translate("MainWindow", "Create New Chord", 0, QApplication::UnicodeUTF8));
+        suggestions_label->setText(QApplication::translate("MainWindow", "Suggestions", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

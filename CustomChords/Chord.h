@@ -69,13 +69,18 @@ public:
     Chord& operator=(Chord const &c);
 };
 
+void removeDuplicates(std::vector<QString>& vec);
 std::vector <QString> autoComplete(Instrument const& inst, int const& capo, QString const& qinput);
 Note extractBassNote(std::vector <Note> const& notes);
 std::vector <int> extractPattern(std::vector <Note> const& notes);
 std::vector <Note> extractNotes(Instrument const& inst, std::string tab_str, int capo);
-std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, std::vector <int> const& pattern);
+std::vector <Note> constructNotes(Instrument const& inst, Note const& bassNote, std::vector <int> const& pattern, int center_fret);
 std::vector <int> constructTab(Instrument const& inst, std::vector <Note> const& notes);
 std::string constructTabStr(Instrument const& inst, std::vector <Note> const& notes);
 int constructFret(int const& tuning, Note const& note);
+int extractCenter(std::vector <Note> notes, Instrument const& inst);
+std::vector <int> extractPatternList(std::vector <int> pattern);
+std::vector < std::vector <int> > autofillPattern(std::vector <int> pattern);
+std::vector < std::vector <int> > autofillPatternRecursive(std::vector <int> pattern, std::vector <int> plist);
 
 #endif // CHORD_H

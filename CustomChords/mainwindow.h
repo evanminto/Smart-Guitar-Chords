@@ -30,6 +30,7 @@ private:
     Ui::MainWindow *ui;
     Instrument current_inst;
     Chord current_chord;
+    std::string base_tab;
     QDir inst_dir;
     QDir chord_dir;
     void printInstInfo();
@@ -40,12 +41,16 @@ private:
     void disableInstForm();
     void wipeChordForm();
     void wipeInstForm();
+    void handleTabChange();
 
     string findInst(string search, QDir d);
 
 private slots:
 
 private slots:
+    void on_suggestions_activated(QString );
+    void on_chord_tab_field_editingFinished();
+    void on_chord_tab_field_textEdited(QString );
     void on_chord_tab_field_textChanged(QString );
     void on_chord_cancel_button_clicked();
     void on_inst_cancel_button_clicked();

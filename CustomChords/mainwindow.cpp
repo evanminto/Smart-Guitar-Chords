@@ -355,6 +355,7 @@ void MainWindow::on_ChordTree_clicked(QModelIndex index)
         ui->statusbar->setText("No valid file/folder selected.");
     }
 
+    handleTabChange();
 
 
 /*
@@ -437,6 +438,8 @@ void MainWindow::printChordInfo()
 
     ui->chord_name_field->setText(QString::fromStdString(current_chord.getName()));
     ui->chord_tab_field->setText(tabStr);
+
+    base_tab = tabStr.toStdString();
     ui->chord_capo_field->setText(QString::number(current_chord.getCapo()));
     ui->chord_relcapo_checkbox->setChecked(current_chord.isRelativeCapo());
 }
@@ -596,7 +599,13 @@ void MainWindow::on_inst_save_button_clicked()
 
     for (i=0; i<tuningVec.size(); i++)
     {
-        tuning += QString::number(tuningStrToInt(tuningVec[i])).toStdString();
+        int oct = 0;
+        if (i==0 || i==1)
+            oct = -1;
+        else if ( i==tuningVec.size()-1 )
+            oct = 1;
+
+        tuning += QString::number(tuningStrToInt(tuningVec[i], oct)).toStdString();
         tuning += " ";
     }
 
@@ -822,10 +831,32 @@ void MainWindow::on_chord_cancel_button_clicked()
 
 void MainWindow::on_chord_tab_field_textChanged(QString )
 {
-    std::vector <QString> results = autoComplete( current_inst, ui->chord_capo_field->text().toInt(), ui->chord_tab_field->text() );
+    handleTabChange();
+}
+
+void MainWindow::on_chord_tab_field_textEdited(QString )
+{
+    base_tab = ui->chord_tab_field->text().toStdString();
+    handleTabChange();
+}
+
+void MainWindow::on_chord_tab_field_editingFinished()
+{
+    base_tab = ui->chord_tab_field->text().toStdString();
+    handleTabChange();
+}
+
+void MainWindow::handleTabChange()
+{
+    std::vector <QString> results = autoComplete( current_inst, ui->chord_capo_field->text().toInt(), QString::fromStdString(base_tab) );
 
     ui->suggestions->clear();
 
     for ( int i=0; i<results.size(); i++ )
         ui->suggestions->addItem(results[i]);
+}
+
+void MainWindow::on_suggestions_activated(QString )
+{
+    ui->chord_tab_field->setText(ui->suggestions->currentText());
 }
